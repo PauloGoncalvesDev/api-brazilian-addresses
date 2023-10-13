@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\BrazilianAddresses.Communication\BrazilianAddresses.Communication.csproj" />
+    <ProjectReference Include="..\..\Shared\BrazilianAddresses.Exceptions\BrazilianAddresses.Exceptions.csproj" />
+    <ProjectReference Include="..\BrazilianAddresses.Domain\BrazilianAddresses.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
