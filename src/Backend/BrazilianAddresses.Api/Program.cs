@@ -1,3 +1,6 @@
+using BrazilianAddresses.Domain.Extension;
+using BrazilianAddresses.Infrastructure.Migrations;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -22,4 +25,14 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+UpdateDatabase();
+
 app.Run();
+
+void UpdateDatabase()
+{
+    var connection = builder.Configuration.GetConnectionString();
+    var databaseName = builder.Configuration.GetDatabaseName();
+
+    Database.CreateDatabase(connection, databaseName);
+}
