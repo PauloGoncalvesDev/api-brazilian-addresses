@@ -34,10 +34,10 @@ app.Run();
 
 void UpdateDatabase()
 {
-    var connection = builder.Configuration.GetConnection();
-    var databaseName = builder.Configuration.GetDatabaseName();
+    //var connection = builder.Configuration.GetConnection();
+    //var databaseName = builder.Configuration.GetDatabaseName();
 
-    Database.CreateDatabase(connection, databaseName);
+    //Database.CreateDatabase(connection, databaseName);
 
     app.MigrateDatabase();
 }

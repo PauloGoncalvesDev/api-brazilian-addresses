@@ -8,6 +8,8 @@ namespace BrazilianAddresses.Infrastructure.RepositoryAccess
         public BrazilianAddressesContext(DbContextOptions<BrazilianAddressesContext> options) : base(options) { }
 
         public DbSet<User> Users { get; set; }
+        
+        public DbSet<IBGE> IBGEs { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

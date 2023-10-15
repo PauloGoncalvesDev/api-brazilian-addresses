@@ -2,6 +2,7 @@
 {
     public enum Version
     {
-        CreateTableUser = 1
+        CreateTableUser = 1,
+        CreateTableIBGE = 2
     }
 }
