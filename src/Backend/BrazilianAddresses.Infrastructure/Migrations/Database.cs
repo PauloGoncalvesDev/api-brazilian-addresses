@@ -13,9 +13,8 @@ namespace BrazilianAddresses.Infrastructure.Migrations
 
                 DynamicParameters parameters = new DynamicParameters();
                 parameters.Add("name", databaseName);
-
-                // TODO: Implementar alguma forma de validar se o DB existe, essa aqui não tá funcionando
-                var results = myConnection.Query("SELECT * FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = @name", parameters);
+                                
+                var results = myConnection.Query("SELECT name FROM sys.databases WHERE name = @name", parameters);
 
                 if (!results.Any())
                 {
