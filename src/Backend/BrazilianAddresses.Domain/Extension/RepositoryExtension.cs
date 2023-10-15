@@ -4,7 +4,7 @@ namespace BrazilianAddresses.Domain.Extension
 {
     public static class RepositoryExtension
     {
-        public static string GetConnectionString(this IConfiguration configurationManager)
+        public static string GetConnection(this IConfiguration configurationManager)
         {
             var connection = configurationManager.GetConnectionString("Connection");
 
@@ -16,6 +16,14 @@ namespace BrazilianAddresses.Domain.Extension
             var databaseName = configurationManager.GetConnectionString("DatabaseName");
 
             return databaseName;
+        }
+
+        public static string GetFullConnection(this IConfiguration configurationManager)
+        {
+            var databaseName = configurationManager.GetDatabaseName();
+            var connection = configurationManager.GetConnection();
+
+            return $"{connection}Database={databaseName}";
         }
     }
 }
