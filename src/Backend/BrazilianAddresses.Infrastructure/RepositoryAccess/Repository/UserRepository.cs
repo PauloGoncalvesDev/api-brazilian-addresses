@@ -1,4 +1,4 @@
-﻿using BrazilianAddresses.Domain.Entitys;
+﻿using BrazilianAddresses.Domain.Entities;
 using BrazilianAddresses.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 

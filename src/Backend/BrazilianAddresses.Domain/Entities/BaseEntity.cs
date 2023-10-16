@@ -1,4 +1,4 @@
-﻿namespace BrazilianAddresses.Domain.Entitys
+﻿namespace BrazilianAddresses.Domain.Entities
 {
     public class BaseEntity
     {
