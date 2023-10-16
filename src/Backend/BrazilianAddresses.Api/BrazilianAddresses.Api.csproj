@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
@@ -15,6 +15,7 @@
     <ProjectReference Include="..\..\Shared\BrazilianAddresses.Communication\BrazilianAddresses.Communication.csproj" />
     <ProjectReference Include="..\..\Shared\BrazilianAddresses.Exceptions\BrazilianAddresses.Exceptions.csproj" />
     <ProjectReference Include="..\BrazilianAddresses.Application\BrazilianAddresses.Application.csproj" />
+    <ProjectReference Include="..\BrazilianAddresses.Infrastructure\BrazilianAddresses.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
