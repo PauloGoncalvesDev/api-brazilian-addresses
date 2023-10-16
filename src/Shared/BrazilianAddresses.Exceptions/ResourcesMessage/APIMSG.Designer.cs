@@ -61,6 +61,51 @@ namespace BrazilianAddresses.Exceptions.ResourcesMessage {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &apos;City&apos; is a required field..
+        /// </summary>
+        public static string EMPTY_CITY {
+            get {
+                return ResourceManager.GetString("EMPTY_CITY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;IBGECode&apos; is a required field..
+        /// </summary>
+        public static string EMPTY_IBGECODE {
+            get {
+                return ResourceManager.GetString("EMPTY_IBGECODE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;State&apos; is a required field..
+        /// </summary>
+        public static string EMPTY_STATE {
+            get {
+                return ResourceManager.GetString("EMPTY_STATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to City code entered is not valid..
+        /// </summary>
+        public static string INVALID_CODE {
+            get {
+                return ResourceManager.GetString("INVALID_CODE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The state reported does not exist..
+        /// </summary>
+        public static string INVALID_STATE {
+            get {
+                return ResourceManager.GetString("INVALID_STATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unknow error..
         /// </summary>
         public static string UNKNOW_ERROR {
