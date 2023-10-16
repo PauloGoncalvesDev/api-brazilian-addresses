@@ -14,7 +14,7 @@ namespace BrazilianAddresses.Infrastructure.RepositoryAccess.Repository
 
         public async Task Add(IBGE ibge)
         {
-            await _context.IBGEs.AddAsync(ibge);
+            await _context.IBGE.AddAsync(ibge);
         }
     }
 }

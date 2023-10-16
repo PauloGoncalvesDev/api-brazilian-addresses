@@ -8,7 +8,9 @@ namespace BrazilianAddresses.Application.Services.Automapper
     {
         public AutomapperConfig()
         {
-            CreateMap<IBGERequestJson, IBGE>();
+            CreateMap<IBGERequestJson, IBGE>()
+                .ForMember(f => f.CreationDate, opt => opt.MapFrom(m => DateTime.Now))
+                .ForMember(f => f.UpdateDate, opt => opt.MapFrom(m => DateTime.Now));
         }
     }
 }
