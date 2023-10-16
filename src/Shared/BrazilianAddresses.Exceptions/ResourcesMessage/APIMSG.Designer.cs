@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BrazilianAddresses.Exceptions.Resources {
+namespace BrazilianAddresses.Exceptions.ResourcesMessage {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace BrazilianAddresses.Exceptions.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BrazilianAddresses.Exceptions.Resources.APIMSG", typeof(APIMSG).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BrazilianAddresses.Exceptions.ResourcesMessage.APIMSG", typeof(APIMSG).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,6 +57,15 @@ namespace BrazilianAddresses.Exceptions.Resources {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unknow error..
+        /// </summary>
+        internal static string UNKNOW_ERROR {
+            get {
+                return ResourceManager.GetString("UNKNOW_ERROR", resourceCulture);
             }
         }
     }

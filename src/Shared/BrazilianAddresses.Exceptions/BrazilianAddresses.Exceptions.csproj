@@ -1,32 +1,32 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <EmbeddedResource Remove="Resources\APIMSG.pt.resx" />
+    <EmbeddedResource Remove="ResourcesMessage\APIMSG.pt.resx" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Resources\APIMSG.pt.resx">
+    <None Include="ResourcesMessage\APIMSG.pt.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>APIMSG.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Resources\APIMSG.Designer.cs">
+    <Compile Update="ResourcesMessage\APIMSG.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>APIMSG.pt.resx</DependentUpon>
+      <DependentUpon>APIMSG.resx</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Resources\APIMSG.resx">
+    <EmbeddedResource Update="ResourcesMessage\APIMSG.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>APIMSG.Designer.cs</LastGenOutput>
     </EmbeddedResource>
