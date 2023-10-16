@@ -88,6 +88,15 @@ namespace BrazilianAddresses.Exceptions.ResourcesMessage {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Location entered was successfully registered..
+        /// </summary>
+        public static string IBGE_CREATED {
+            get {
+                return ResourceManager.GetString("IBGE_CREATED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to City code entered is not valid..
         /// </summary>
         public static string INVALID_CODE {

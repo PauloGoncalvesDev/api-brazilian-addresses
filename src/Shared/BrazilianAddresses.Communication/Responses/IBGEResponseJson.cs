@@ -2,5 +2,6 @@
 {
     public class IBGEResponseJson : BaseResponseJson
     {
+        public string IBGECode { get; set; }
     }
 }

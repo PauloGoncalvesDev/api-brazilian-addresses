@@ -126,6 +126,9 @@
   <data name="EMPTY_STATE" xml:space="preserve">
     <value>'State' is a required field.</value>
   </data>
+  <data name="IBGE_CREATED" xml:space="preserve">
+    <value>Location entered was successfully registered.</value>
+  </data>
   <data name="INVALID_CODE" xml:space="preserve">
     <value>City code entered is not valid.</value>
   </data>

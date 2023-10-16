@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
 using BrazilianAddresses.Application.Validators.IBGEValidator;
 using BrazilianAddresses.Communication.Requests;
+using BrazilianAddresses.Communication.Responses;
 using BrazilianAddresses.Domain.Entities;
 using BrazilianAddresses.Domain.Repositories;
 using BrazilianAddresses.Domain.Repositories.IBGERepository;
 using BrazilianAddresses.Exceptions.ExceptionsBase;
+using BrazilianAddresses.Exceptions.ResourcesMessage;
 using FluentValidation.Results;
 
 namespace BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule
@@ -24,7 +26,7 @@ namespace BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule
             _workUnit = workUnit;
         }
 
-        public async Task Execute(IBGERequestJson ibgeRequestJson)
+        public async Task<IBGEResponseJson> Execute(IBGERequestJson ibgeRequestJson)
         {
             ValidateIBGE(ibgeRequestJson);
 
@@ -33,6 +35,13 @@ namespace BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule
             await _ibgeWriteOnlyRepository.Add(ibge);
 
             await _workUnit.Commit();
+
+            return new IBGEResponseJson
+            {
+                Message = APIMSG.IBGE_CREATED,
+                Success = true,
+                IBGECode = ibge.IBGECode
+            };
         }
 
         private static void ValidateIBGE(IBGERequestJson ibgeRequestJson)
