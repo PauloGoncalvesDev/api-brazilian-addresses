@@ -6,4 +6,30 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <EmbeddedResource Remove="Resources\APIMSG.pt.resx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Resources\APIMSG.pt.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>APIMSG.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Resources\APIMSG.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>APIMSG.pt.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\APIMSG.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>APIMSG.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
 </Project>
