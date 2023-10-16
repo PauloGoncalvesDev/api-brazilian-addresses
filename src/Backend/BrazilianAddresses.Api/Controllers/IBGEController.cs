@@ -9,7 +9,7 @@ namespace BrazilianAddresses.Api.Controllers
     {
         [HttpPost]
         [ProducesResponseType(typeof(IBGEResponseJson), StatusCodes.Status201Created)]
-        public async Task<IActionResult> RegisterUser([FromServices] ICreateIBGE createIBGE, [FromBody] IBGERequestJson ibgeRequestJson)
+        public async Task<IActionResult> CreateIBGE([FromServices] ICreateIBGE createIBGE, [FromBody] IBGERequestJson ibgeRequestJson)
         {
             IBGEResponseJson ibgeResponseJson = await createIBGE.Execute(ibgeRequestJson);
 
