@@ -34,12 +34,18 @@ namespace BrazilianAddresses.Application.Validators.IBGEValidator
 
         private void ValidateCity()
         {
-            RuleFor(r => r.City).NotEmpty().WithMessage(APIMSG.EMPTY_CITY);
+            RuleFor(r => r.City).NotEmpty().WithMessage(APIMSG.EMPTY_CITY)
+            .Must(NotContainNumber).WithMessage(APIMSG.INVALID_CITY);
         }
 
         private bool StateInEnum(string state)
         {  
             return Enum.TryParse<StateEnum>(state, out _);
+        }
+
+        private bool NotContainNumber(string input)
+        {
+            return input != null && !input.Any(char.IsDigit);
         }
     }
 }

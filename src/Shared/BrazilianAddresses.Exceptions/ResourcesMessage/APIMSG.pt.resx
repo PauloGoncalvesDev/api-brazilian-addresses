@@ -129,6 +129,9 @@
   <data name="IBGE_CREATED" xml:space="preserve">
     <value>Localidade informada foi registrado com sucesso.</value>
   </data>
+  <data name="INVALID_CITY" xml:space="preserve">
+    <value>Cidade informada não é válida.</value>
+  </data>
   <data name="INVALID_CODE" xml:space="preserve">
     <value>Código de munícipio informado não é válido.</value>
   </data>

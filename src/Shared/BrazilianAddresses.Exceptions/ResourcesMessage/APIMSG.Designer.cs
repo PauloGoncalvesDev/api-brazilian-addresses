@@ -97,6 +97,15 @@ namespace BrazilianAddresses.Exceptions.ResourcesMessage {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to City entered is not valid..
+        /// </summary>
+        public static string INVALID_CITY {
+            get {
+                return ResourceManager.GetString("INVALID_CITY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to City code entered is not valid..
         /// </summary>
         public static string INVALID_CODE {

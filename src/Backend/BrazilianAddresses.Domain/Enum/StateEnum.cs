@@ -1,33 +1,63 @@
-﻿namespace BrazilianAddresses.Domain.Enum
+﻿using System.ComponentModel;
+
+namespace BrazilianAddresses.Domain.Enum
 {
     public enum StateEnum
     {
-        Acre = 1,
-        Alagoas = 2,
-        Amapá = 3,
-        Amazonas = 4,
-        Bahia = 5,
-        Ceará = 6,
-        DistritoFederal = 7,
-        EspíritoSanto = 8,
-        Goiás = 9,
-        Maranhão = 10,
-        MatoGrosso = 11,
-        MatoGrossoDoSul = 12,
-        MinasGerais = 13,
-        Pará = 14,
-        Paraíba = 15,
-        Paraná = 16,
-        Pernambuco = 17,
-        Piauí = 18,
-        RioDeJaneiro = 19,
-        RioGrandeDoNorte = 20,
-        RioGrandeDoSul = 21,
-        Rondônia = 22,
-        Roraima = 23,
-        SantaCatarina = 24,
-        SãoPaulo = 25,
-        Sergipe = 26,
-        Tocantins = 27
+        [Description("Acre")]
+        AC = 1,
+        [Description("Alagoas")]
+        AL = 2,
+        [Description("Amapá")]
+        AP = 3,
+        [Description("Amazonas")]
+        AM = 4,
+        [Description("Bahia")]
+        BA = 5,
+        [Description("Ceará")]
+        CE = 6,
+        [Description("Distrito Federal")]
+        DF = 7,
+        [Description("Espírito Santo")]
+        ES = 8,
+        [Description("Goiás")]
+        GO = 9,
+        [Description("Maranhão")]
+        MA = 10,
+        [Description("Mato Grosso")]
+        MT = 11,
+        [Description("Mato Grosso do Sul")]
+        MS = 12,
+        [Description("Minas Gerais")]
+        MG = 13,
+        [Description("Pará")]
+        PA = 14,
+        [Description("Paraíba")]
+        PB = 15,
+        [Description("Paraná")]
+        PR = 16,
+        [Description("Pernambuco")]
+        PE = 17,
+        [Description("Piauí")]
+        PI = 18,
+        [Description("Rio de Janeiro")]
+        RJ = 19,
+        [Description("Rio Grande do Norte")]
+        RN = 20,
+        [Description("Rio Grande do Sul")]
+        RS = 21,
+        [Description("Rondônia")]
+        RO = 22,
+        [Description("Roraima")]
+        RR = 23,
+        [Description("Santa Catarina")]
+        SC = 24,
+        [Description("São Paulo")]
+        SP = 25,
+        [Description("Sergipe")]
+        SE = 26,
+        [Description("Tocantins")]
+        TO = 27
     }
+
 }
