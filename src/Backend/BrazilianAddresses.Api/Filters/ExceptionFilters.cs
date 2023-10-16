@@ -11,7 +11,7 @@ namespace BrazilianAddresses.Api.Filters
     {
         public void OnException(ExceptionContext context)
         {
-           if(context.Exception is BrazilianAddressesException)
+            if (context.Exception is BrazilianAddressesException)
                 HandleBrazilianAddressesException(context);
             else
                 HandleDefaultException(context);
