@@ -13,14 +13,14 @@ namespace BrazilianAddresses.Api.Filters
         {
            if(context.Exception is BrazilianAddressesException)
                 HandleBrazilianAddressesException(context);
+            else
+                HandleDefaultException(context);
         }
 
         private void HandleBrazilianAddressesException(ExceptionContext context)
         {
             if (context.Exception is ValidationException)
                 HandleValidationException(context);
-            else
-                HandleDefaultException(context);
         }
 
         private void HandleValidationException(ExceptionContext context)

@@ -1,3 +1,4 @@
+using BrazilianAddresses.Api.Filters;
 using BrazilianAddresses.Domain.Extension;
 using BrazilianAddresses.Infrastructure;
 using BrazilianAddresses.Infrastructure.Migrations;
@@ -12,6 +13,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddRepository(builder.Configuration);
+
+builder.Services.AddMvc(options => options.Filters.Add(typeof(ExceptionFilters)));
 
 var app = builder.Build();
 
