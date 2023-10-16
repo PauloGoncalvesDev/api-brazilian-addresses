@@ -1,6 +1,6 @@
 using BrazilianAddresses.Api.Filters;
 using BrazilianAddresses.Application;
-using BrazilianAddresses.Application.Services;
+using BrazilianAddresses.Application.Services.Automapper;
 using BrazilianAddresses.Domain.Extension;
 using BrazilianAddresses.Infrastructure;
 using BrazilianAddresses.Infrastructure.Migrations;

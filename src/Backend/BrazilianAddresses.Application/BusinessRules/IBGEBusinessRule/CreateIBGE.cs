@@ -13,11 +13,11 @@ namespace BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule
     {
         private readonly IIBGEWriteOnlyRepository _ibgeWriteOnlyRepository;
 
-        private readonly Mapper _mapper;
+        private readonly IMapper _mapper;
 
         private readonly IWorkUnit _workUnit;
 
-        public CreateIBGE(IIBGEWriteOnlyRepository ibgeWriteOnlyRepository, Mapper mapper, IWorkUnit workUnit)
+        public CreateIBGE(IIBGEWriteOnlyRepository ibgeWriteOnlyRepository, IMapper mapper, IWorkUnit workUnit)
         {
             _ibgeWriteOnlyRepository = ibgeWriteOnlyRepository;
             _mapper = mapper;

@@ -43,7 +43,7 @@ namespace BrazilianAddresses.Infrastructure
             services.AddScoped<IUserWriteOnlyRepository, UserRepository>()
                     .AddScoped<IUserReadOnlyRepository, UserRepository>()
                     .AddScoped<IIBGEReadOnlyRepository, IBGERepository>()
-                    .AddScoped<IIBGEReadOnlyRepository, IBGERepository>();
+                    .AddScoped<IIBGEWriteOnlyRepository, IBGERepository>();
         }
 
         private static void AddFluentMigrator(IServiceCollection services, IConfiguration configurationManager)
