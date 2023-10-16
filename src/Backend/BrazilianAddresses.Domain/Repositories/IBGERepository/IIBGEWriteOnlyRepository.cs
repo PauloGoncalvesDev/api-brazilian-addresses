@@ -1,6 +1,6 @@
 ﻿using BrazilianAddresses.Domain.Entities;
 
-namespace BrazilianAddresses.Domain.Repositories
+namespace BrazilianAddresses.Domain.Repositories.IBGERepository
 {
     public interface IIBGEWriteOnlyRepository
     {

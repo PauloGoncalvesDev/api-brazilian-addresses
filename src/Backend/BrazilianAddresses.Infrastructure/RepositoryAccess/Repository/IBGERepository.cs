@@ -1,5 +1,5 @@
 ﻿using BrazilianAddresses.Domain.Entities;
-using BrazilianAddresses.Domain.Repositories;
+using BrazilianAddresses.Domain.Repositories.IBGERepository;
 
 namespace BrazilianAddresses.Infrastructure.RepositoryAccess.Repository
 {
