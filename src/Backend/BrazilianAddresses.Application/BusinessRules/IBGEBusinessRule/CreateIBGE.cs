@@ -5,7 +5,7 @@ using FluentValidation.Results;
 
 namespace BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule
 {
-    public class CreateIBGE
+    public class CreateIBGE : ICreateIBGE
     {
         public async Task Execute(IBGERequestJson ibgeRequestJson)
         {
