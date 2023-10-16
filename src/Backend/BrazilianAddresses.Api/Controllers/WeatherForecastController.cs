@@ -1,3 +1,5 @@
+using BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule;
+using BrazilianAddresses.Communication.Requests;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BrazilianAddresses.Api.Controllers
@@ -6,28 +8,17 @@ namespace BrazilianAddresses.Api.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
-
-        private readonly ILogger<WeatherForecastController> _logger;
-
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
-        {
-            _logger = logger;
-        }
-
         [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
+        public async Task<IActionResult> Get([FromServices] ICreateIBGE createIBGE)
         {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            await createIBGE.Execute(new IBGERequestJson
             {
-                Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
+                City = "Russas",
+                State = "Ceará",
+                IBGECode = "12646453"
+            });
+
+            return Ok();
         }
     }
 }
