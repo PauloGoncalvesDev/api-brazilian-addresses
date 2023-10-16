@@ -21,15 +21,15 @@ namespace BrazilianAddresses.Application.Validators.IBGEValidator
             RuleFor(r => r.IBGECode).NotEmpty().WithMessage(APIMSG.EMPTY_IBGECODE);
             When(r => !string.IsNullOrEmpty(r.IBGECode), () =>
             {
-                RuleFor(r => r.IBGECode.Length).GreaterThan(7).WithMessage(APIMSG.INVALID_CODE);
+                RuleFor(r => r.IBGECode.Length).Equal(7).WithMessage(APIMSG.INVALID_CODE);
             });
         }
 
         private void ValidateState()
         {
             RuleFor(r => r.State).
-                NotEmpty().WithMessage(APIMSG.EMPTY_STATE)
-                .Must(StateInEnum).WithMessage(APIMSG.INVALID_STATE);
+                NotEmpty().WithMessage(APIMSG.EMPTY_STATE)                
+                .Must(state => StateInEnum(state?.Replace(" ", string.Empty))).WithMessage(APIMSG.INVALID_STATE);
         }
 
         private void ValidateCity()
