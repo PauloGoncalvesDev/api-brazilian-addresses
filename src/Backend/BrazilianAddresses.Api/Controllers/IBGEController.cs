@@ -1,4 +1,4 @@
-﻿using BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule;
+﻿using BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule.Interfaces;
 using BrazilianAddresses.Communication.Requests;
 using BrazilianAddresses.Communication.Responses;
 using Microsoft.AspNetCore.Mvc;

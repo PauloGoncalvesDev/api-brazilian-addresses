@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule.Interfaces;
 using BrazilianAddresses.Application.Validators.IBGEValidator;
 using BrazilianAddresses.Communication.Requests;
 using BrazilianAddresses.Communication.Responses;
