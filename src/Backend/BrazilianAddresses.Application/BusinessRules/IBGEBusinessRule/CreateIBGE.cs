@@ -53,7 +53,7 @@ namespace BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule
 
             bool existingIBGE = await _ibgeReadOnlyRepository.GetExistingIBGEByIBGECode(ibgeRequestJson.IBGECode);
 
-            if (existingIBGE != false)
+            if (existingIBGE)
                 validationResult.Errors.Add(new FluentValidation.Results.ValidationFailure(ibgeRequestJson.IBGECode, APIMSG.EXISTING_CODE));
 
             if (!validationResult.IsValid)
