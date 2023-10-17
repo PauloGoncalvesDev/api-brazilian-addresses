@@ -15,20 +15,23 @@ namespace BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule
     {
         private readonly IIBGEWriteOnlyRepository _ibgeWriteOnlyRepository;
 
+        private readonly IIBGEReadOnlyRepository _ibgeReadOnlyRepository;
+
         private readonly IMapper _mapper;
 
         private readonly IWorkUnit _workUnit;
 
-        public CreateIBGE(IIBGEWriteOnlyRepository ibgeWriteOnlyRepository, IMapper mapper, IWorkUnit workUnit)
+        public CreateIBGE(IIBGEWriteOnlyRepository ibgeWriteOnlyRepository, IMapper mapper, IWorkUnit workUnit, IIBGEReadOnlyRepository ibgeReadOnlyRepository)
         {
             _ibgeWriteOnlyRepository = ibgeWriteOnlyRepository;
             _mapper = mapper;
             _workUnit = workUnit;
+            _ibgeReadOnlyRepository = ibgeReadOnlyRepository;
         }
 
         public async Task<IBGEResponseJson> Execute(IBGERequestJson ibgeRequestJson)
         {
-            ValidateIBGE(ibgeRequestJson);
+            await ValidateIBGE(ibgeRequestJson);
 
             IBGE ibge = _mapper.Map<IBGE>(ibgeRequestJson);
 
@@ -44,9 +47,14 @@ namespace BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule
             };
         }
 
-        private static void ValidateIBGE(IBGERequestJson ibgeRequestJson)
+        private async Task ValidateIBGE(IBGERequestJson ibgeRequestJson)
         {
             ValidationResult validationResult = new ValidateIBGE().Validate(ibgeRequestJson);
+
+            bool existingIBGE = await _ibgeReadOnlyRepository.GetExistingIBGEByIBGECode(ibgeRequestJson.IBGECode);
+
+            if (existingIBGE != false)
+                validationResult.Errors.Add(new FluentValidation.Results.ValidationFailure(ibgeRequestJson.IBGECode, APIMSG.EXISTING_CODE));
 
             if (!validationResult.IsValid)
             {
