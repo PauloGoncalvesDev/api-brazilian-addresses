@@ -133,6 +133,15 @@ namespace BrazilianAddresses.Exceptions.ResourcesMessage {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The city code entered is not registered..
+        /// </summary>
+        public static string NO_EXISTING_CODE {
+            get {
+                return ResourceManager.GetString("NO_EXISTING_CODE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unknow error..
         /// </summary>
         public static string UNKNOW_ERROR {
