@@ -1,4 +1,4 @@
-﻿using BrazilianAddresses.Infrastructure.RepositoryAccess.Repository;
+﻿using BrazilianAddresses.Domain.Repositories;
 
 namespace BrazilianAddresses.Infrastructure.RepositoryAccess
 {

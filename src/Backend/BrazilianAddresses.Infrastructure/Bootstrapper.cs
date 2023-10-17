@@ -1,12 +1,14 @@
 ﻿using BrazilianAddresses.Domain.Extension;
 using BrazilianAddresses.Domain.Repositories;
+using BrazilianAddresses.Domain.Repositories.IBGERepository;
+using BrazilianAddresses.Domain.Repositories.UserRepository;
 using BrazilianAddresses.Infrastructure.RepositoryAccess;
 using BrazilianAddresses.Infrastructure.RepositoryAccess.Repository;
 using FluentMigrator.Runner;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
-using Microsoft.EntityFrameworkCore;
 
 namespace BrazilianAddresses.Infrastructure
 {
@@ -41,7 +43,7 @@ namespace BrazilianAddresses.Infrastructure
             services.AddScoped<IUserWriteOnlyRepository, UserRepository>()
                     .AddScoped<IUserReadOnlyRepository, UserRepository>()
                     .AddScoped<IIBGEReadOnlyRepository, IBGERepository>()
-                    .AddScoped<IIBGEReadOnlyRepository, IBGERepository>();
+                    .AddScoped<IIBGEWriteOnlyRepository, IBGERepository>();
         }
 
         private static void AddFluentMigrator(IServiceCollection services, IConfiguration configurationManager)

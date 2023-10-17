@@ -1,6 +1,7 @@
 ﻿namespace BrazilianAddresses.Domain.Repositories
 {
-    public interface IIBGEReadOnlyRepository
+    public interface IWorkUnit
     {
+        Task Commit();
     }
 }

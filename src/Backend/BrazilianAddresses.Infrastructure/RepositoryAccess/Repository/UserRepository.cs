@@ -1,5 +1,5 @@
-﻿using BrazilianAddresses.Domain.Entitys;
-using BrazilianAddresses.Domain.Repositories;
+﻿using BrazilianAddresses.Domain.Entities;
+using BrazilianAddresses.Domain.Repositories.UserRepository;
 using Microsoft.EntityFrameworkCore;
 
 namespace BrazilianAddresses.Infrastructure.RepositoryAccess.Repository

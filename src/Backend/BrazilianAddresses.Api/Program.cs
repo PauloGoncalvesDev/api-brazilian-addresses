@@ -1,3 +1,6 @@
+using BrazilianAddresses.Api.Filters;
+using BrazilianAddresses.Application;
+using BrazilianAddresses.Application.Services.Automapper;
 using BrazilianAddresses.Domain.Extension;
 using BrazilianAddresses.Infrastructure;
 using BrazilianAddresses.Infrastructure.Migrations;
@@ -12,6 +15,13 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddRepository(builder.Configuration);
+builder.Services.AddApplication();
+builder.Services.AddMvc(options => options.Filters.Add(typeof(ExceptionFilters)));
+
+builder.Services.AddScoped(provider => new AutoMapper.MapperConfiguration(cfg =>
+{
+    cfg.AddProfile(new AutomapperConfig());
+}).CreateMapper());
 
 var app = builder.Build();
 

@@ -1,4 +1,4 @@
-﻿using BrazilianAddresses.Domain.Entitys;
+﻿using BrazilianAddresses.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace BrazilianAddresses.Infrastructure.RepositoryAccess
@@ -9,7 +9,7 @@ namespace BrazilianAddresses.Infrastructure.RepositoryAccess
 
         public DbSet<User> Users { get; set; }
         
-        public DbSet<IBGE> IBGEs { get; set; }
+        public DbSet<IBGE> IBGE { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

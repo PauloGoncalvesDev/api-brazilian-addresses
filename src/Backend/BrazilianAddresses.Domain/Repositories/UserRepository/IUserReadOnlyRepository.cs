@@ -1,4 +1,4 @@
-﻿namespace BrazilianAddresses.Domain.Repositories
+﻿namespace BrazilianAddresses.Domain.Repositories.UserRepository
 {
     public interface IUserReadOnlyRepository
     {
