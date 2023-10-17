@@ -4,6 +4,6 @@ namespace BrazilianAddresses.Domain.Repositories.IBGERepository
 {
     public interface IIBGEReadOnlyRepository
     {
-        Task<bool> GetExistingIBGEByIBGECode(string ibgeCode);
+        Task<IBGE> GetIBGEByIBGECode(string ibgeCode);
     }
 }

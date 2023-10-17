@@ -51,9 +51,9 @@ namespace BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule
         {
             ValidationResult validationResult = new ValidateIBGE().Validate(ibgeRequestJson);
 
-            bool existingIBGE = await _ibgeReadOnlyRepository.GetExistingIBGEByIBGECode(ibgeRequestJson.IBGECode);
+            IBGE existingIBGE = await _ibgeReadOnlyRepository.GetIBGEByIBGECode(ibgeRequestJson.IBGECode);
 
-            if (existingIBGE)
+            if (existingIBGE != null)
                 validationResult.Errors.Add(new FluentValidation.Results.ValidationFailure(ibgeRequestJson.IBGECode, APIMSG.EXISTING_CODE));
 
             if (!validationResult.IsValid)

@@ -18,9 +18,10 @@ namespace BrazilianAddresses.Infrastructure.RepositoryAccess.Repository
             await _context.IBGE.AddAsync(ibge);
         }
 
-        public async Task<bool> GetExistingIBGEByIBGECode(string ibgeCode)
+        public async Task<IBGE> GetIBGEByIBGECode(string ibgeCode)
         {
-            return await _context.IBGE.AnyAsync(u => u.IBGECode.Equals(ibgeCode));
+            return await _context.IBGE.AsNoTracking()
+                .FirstOrDefaultAsync(u => u.IBGECode.Equals(ibgeCode));
         }
     }
 }
