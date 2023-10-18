@@ -141,7 +141,13 @@
   <data name="INVALID_STATE" xml:space="preserve">
     <value>The state reported does not exist.</value>
   </data>
+  <data name="NO_EXISTING_CODE" xml:space="preserve">
+    <value>The city code entered is not registered.</value>
+  </data>
   <data name="UNKNOW_ERROR" xml:space="preserve">
     <value>Unknow error.</value>
+  </data>
+  <data name="UPDATED_IBGE" xml:space="preserve">
+    <value>Requested information has been successfully updated.</value>
   </data>
 </root>
