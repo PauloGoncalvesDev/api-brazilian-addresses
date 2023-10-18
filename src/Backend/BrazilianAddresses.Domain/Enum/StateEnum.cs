@@ -59,5 +59,4 @@ namespace BrazilianAddresses.Domain.Enum
         [Description("Tocantins")]
         TO = 27
     }
-
 }

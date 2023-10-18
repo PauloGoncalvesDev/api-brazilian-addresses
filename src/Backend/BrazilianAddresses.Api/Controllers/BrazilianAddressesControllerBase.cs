@@ -4,7 +4,5 @@ namespace BrazilianAddresses.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class BrazilianAddressesControllerBase : Controller
-    {
-    }
+    public class BrazilianAddressesControllerBase : Controller { }
 }

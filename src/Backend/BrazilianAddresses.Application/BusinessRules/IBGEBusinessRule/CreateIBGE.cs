@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule.Interfaces;
 using BrazilianAddresses.Application.Validators.IBGEValidator;
 using BrazilianAddresses.Communication.Requests;
 using BrazilianAddresses.Communication.Responses;
@@ -54,11 +55,12 @@ namespace BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule
             IBGE existingIBGE = await _ibgeReadOnlyRepository.GetIBGEByIBGECode(ibgeRequestJson.IBGECode);
 
             if (existingIBGE != null)
-                validationResult.Errors.Add(new FluentValidation.Results.ValidationFailure(ibgeRequestJson.IBGECode, APIMSG.EXISTING_CODE));
+                validationResult.Errors.Add(new ValidationFailure(ibgeRequestJson.IBGECode, APIMSG.EXISTING_CODE));
 
             if (!validationResult.IsValid)
             {
                 List<string> errorMessages = validationResult.Errors.Select(error => error.ErrorMessage).ToList();
+                
                 throw new ValidationException(errorMessages);
             }
         }
