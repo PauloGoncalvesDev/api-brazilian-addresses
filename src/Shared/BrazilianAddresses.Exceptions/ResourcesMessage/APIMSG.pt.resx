@@ -126,6 +126,9 @@
   <data name="EMPTY_STATE" xml:space="preserve">
     <value>'State' é um campo obrigatório.</value>
   </data>
+  <data name="EXECUTION_SUCCESS_MSG" xml:space="preserve">
+    <value>Método executado com sucesso</value>
+  </data>
   <data name="EXISTING_CODE" xml:space="preserve">
     <value>O código de município informado já está registrado.</value>
   </data>

@@ -1,7 +1,7 @@
-﻿using BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule;
+﻿using Microsoft.AspNetCore.Mvc;
 using BrazilianAddresses.Communication.Requests;
 using BrazilianAddresses.Communication.Responses;
-using Microsoft.AspNetCore.Mvc;
+using BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule.Interfaces;
 
 namespace BrazilianAddresses.Api.Controllers
 {
@@ -14,6 +14,14 @@ namespace BrazilianAddresses.Api.Controllers
             IBGEResponseJson ibgeResponseJson = await createIBGE.Execute(ibgeRequestJson);
 
             return Created(string.Empty, ibgeResponseJson);
+        }
+
+        [HttpGet("ListAllIBGEAddress")]
+        public async Task<IActionResult> ListAllIBGEAddress([FromServices] IListAllIBGEAddress listAllIBGEAddress, [FromQuery] PaginationBaseRequestJson paginationBaseRequestJson)
+        {
+            List<IBGEResponseJson> ibgeResponseJsons = await listAllIBGEAddress.Execute(paginationBaseRequestJson);
+
+            return Ok(new { sucess = true, message = "apenas um teste", ibgeResponseJsons });
         }
     }
 }
