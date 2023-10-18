@@ -147,4 +147,7 @@
   <data name="UNKNOW_ERROR" xml:space="preserve">
     <value>Unknow error.</value>
   </data>
+  <data name="UPDATED_IBGE" xml:space="preserve">
+    <value>Requested information has been successfully updated.</value>
+  </data>
 </root>

@@ -27,19 +27,32 @@ namespace BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule
             _workUnit = workUnit;
         }
 
-        public async Task<IBGEResponseJson> Execute(IBGERequestJson ibgeRequestJson)
+        public async Task<IBGEResponseJson> Execute(IBGEUpdateRequestJson ibgeUpdateRequestJson)
         {
-            await ValidateIBGE(ibgeRequestJson);
+            IBGE ibge = await _ibgeUpdateOnlyRepository.GetIBGEByIBGECodeToUpdate(ibgeUpdateRequestJson.IBGECode);
+
+            await ValidateIBGE(ibgeUpdateRequestJson, ibge);
+
+            _mapper.Map(ibgeUpdateRequestJson, ibge);
+
+            _ibgeUpdateOnlyRepository.Update(ibge);
+
+            await _workUnit.Commit();
+
+            return new IBGEResponseJson
+            {
+                Message = APIMSG.UPDATED_IBGE,
+                Success = true,
+                IBGECode = ibge.IBGECode
+            };
         }
 
-        public async Task ValidateIBGE(IBGERequestJson ibgeRequestJson)
+        public async Task ValidateIBGE(IBGEUpdateRequestJson ibgeUpdateRequestJson, IBGE ibge)
         {
-            ValidationResult validationResult = new ValidateIBGE().Validate(ibgeRequestJson);
+            ValidationResult validationResult = new ValidateUpdateIBGE().Validate(ibgeUpdateRequestJson);       
 
-            IBGE existingIBGE = await _ibgeUpdateOnlyRepository.GetIBGEByIBGECodeToUpdate(ibgeRequestJson.IBGECode);
-
-            if(existingIBGE == null)
-                validationResult.Errors.Add(new FluentValidation.Results.ValidationFailure(ibgeRequestJson.IBGECode, APIMSG.NO_EXISTING_CODE));
+            if(ibge == null)
+                validationResult.Errors.Add(new FluentValidation.Results.ValidationFailure(ibgeUpdateRequestJson.IBGECode, APIMSG.NO_EXISTING_CODE));
 
             if (!validationResult.IsValid)
             {

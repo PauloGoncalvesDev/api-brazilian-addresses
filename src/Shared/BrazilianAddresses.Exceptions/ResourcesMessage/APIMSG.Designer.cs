@@ -149,5 +149,14 @@ namespace BrazilianAddresses.Exceptions.ResourcesMessage {
                 return ResourceManager.GetString("UNKNOW_ERROR", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Requested information has been successfully updated..
+        /// </summary>
+        public static string UPDATED_IBGE {
+            get {
+                return ResourceManager.GetString("UPDATED_IBGE", resourceCulture);
+            }
+        }
     }
 }

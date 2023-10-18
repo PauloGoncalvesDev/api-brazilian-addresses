@@ -5,6 +5,6 @@ namespace BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule.Interfac
 {
     public interface IUpdateIBGE
     {
-        public Task<IBGEResponseJson> Execute(IBGERequestJson ibgeRequestJson);
+        public Task<IBGEResponseJson> Execute(IBGEUpdateRequestJson ibgeUpdateRequestJson);
     }
 }

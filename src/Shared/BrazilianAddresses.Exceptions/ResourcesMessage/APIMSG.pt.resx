@@ -147,4 +147,7 @@
   <data name="UNKNOW_ERROR" xml:space="preserve">
     <value>Erro desconhecido.</value>
   </data>
+  <data name="UPDATED_IBGE" xml:space="preserve">
+    <value>Informações solicitadas foram atualizadas com sucesso.</value>
+  </data>
 </root>
