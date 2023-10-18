@@ -1,4 +1,5 @@
 ﻿using BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule;
+using BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace BrazilianAddresses.Application

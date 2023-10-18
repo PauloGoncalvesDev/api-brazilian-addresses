@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BrazilianAddresses.Infrastructure.RepositoryAccess.Repository
 {
-    public class IBGERepository : IIBGEReadOnlyRepository, IIBGEWriteOnlyRepository
+    public class IBGERepository : IIBGEReadOnlyRepository, IIBGEWriteOnlyRepository, IIBGERemoveOnlyRepository
     {
         private readonly BrazilianAddressesContext _context;
 
@@ -22,6 +22,11 @@ namespace BrazilianAddresses.Infrastructure.RepositoryAccess.Repository
         {
             return await _context.IBGE.AsNoTracking()
                 .FirstOrDefaultAsync(u => u.IBGECode.Equals(ibgeCode));
+        }
+
+        public void Remove(IBGE ibge)
+        {
+            _context.IBGE.Update(ibge);
         }
     }
 }

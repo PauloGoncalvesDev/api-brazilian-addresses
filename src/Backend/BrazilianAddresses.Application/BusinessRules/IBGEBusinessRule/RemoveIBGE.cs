@@ -1,6 +1,4 @@
-﻿using AutoMapper;
-using BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule.Interfaces;
-using BrazilianAddresses.Application.Validators.IBGEValidator;
+﻿using BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule.Interfaces;
 using BrazilianAddresses.Communication.Requests;
 using BrazilianAddresses.Communication.Responses;
 using BrazilianAddresses.Domain.Entities;
@@ -12,31 +10,24 @@ using FluentValidation.Results;
 
 namespace BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule
 {
-    public class CreateIBGE : ICreateIBGE
+    public class RemoveIBGE : IRemoveIBGE
     {
         private readonly IIBGEWriteOnlyRepository _ibgeWriteOnlyRepository;
 
         private readonly IIBGEReadOnlyRepository _ibgeReadOnlyRepository;
 
-        private readonly IMapper _mapper;
-
         private readonly IWorkUnit _workUnit;
 
-        public CreateIBGE(IIBGEWriteOnlyRepository ibgeWriteOnlyRepository, IMapper mapper, IWorkUnit workUnit, IIBGEReadOnlyRepository ibgeReadOnlyRepository)
+        public RemoveIBGE(IIBGEWriteOnlyRepository ibgeWriteOnlyRepository, IIBGEReadOnlyRepository ibgeReadOnlyRepository, IWorkUnit workUnit)
         {
             _ibgeWriteOnlyRepository = ibgeWriteOnlyRepository;
-            _mapper = mapper;
-            _workUnit = workUnit;
             _ibgeReadOnlyRepository = ibgeReadOnlyRepository;
+            _workUnit = workUnit;
         }
 
-        public async Task<IBGEResponseJson> Execute(IBGERequestJson ibgeRequestJson)
+        public async Task<IBGEResponseJson> Execute(string iBGECode)
         {
-            await ValidateIBGE(ibgeRequestJson);
-
-            IBGE ibge = _mapper.Map<IBGE>(ibgeRequestJson);
-
-            await _ibgeWriteOnlyRepository.Add(ibge);
+            await ValidateIBGE(iBGECode);
 
             await _workUnit.Commit();
 
@@ -44,18 +35,18 @@ namespace BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule
             {
                 Message = APIMSG.IBGE_CREATED,
                 Success = true,
-                IBGECode = ibge.IBGECode
+                IBGECode = iBGECode
             };
         }
 
-        private async Task ValidateIBGE(IBGERequestJson ibgeRequestJson)
+        private async Task ValidateIBGE(string iBGECode)
         {
-            ValidationResult validationResult = new ValidateIBGE().Validate(ibgeRequestJson);
+            ValidationResult validationResult = new ValidationResult();
 
-            IBGE existingIBGE = await _ibgeReadOnlyRepository.GetIBGEByIBGECode(ibgeRequestJson.IBGECode);
+            IBGE existingIBGE = await _ibgeReadOnlyRepository.GetIBGEByIBGECode(iBGECode);
 
-            if (existingIBGE != null)
-                validationResult.Errors.Add(new FluentValidation.Results.ValidationFailure(ibgeRequestJson.IBGECode, APIMSG.EXISTING_CODE));
+            if (existingIBGE == null)
+                validationResult.Errors.Add(new FluentValidation.Results.ValidationFailure(iBGECode, APIMSG.EXISTING_CODE));
 
             if (!validationResult.IsValid)
             {
