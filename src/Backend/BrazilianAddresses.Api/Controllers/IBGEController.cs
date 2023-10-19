@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using BrazilianAddresses.Communication.Requests;
 using BrazilianAddresses.Communication.Responses;
+using BrazilianAddresses.Exceptions.ExceptionsBase;
+using BrazilianAddresses.Exceptions.ResourcesMessage;
 using BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule.Interfaces;
 
 namespace BrazilianAddresses.Api.Controllers
@@ -16,12 +18,19 @@ namespace BrazilianAddresses.Api.Controllers
             return Created(string.Empty, ibgeResponseJson);
         }
 
-        [HttpGet("ListAllIBGEAddress")]
+        [HttpGet("GetAllIBGEAddress")]
         public async Task<IActionResult> ListAllIBGEAddress([FromServices] IListAllIBGEAddress listAllIBGEAddress, [FromQuery] PaginationBaseRequestJson paginationBaseRequestJson)
         {
-            List<IBGEResponseJson> ibgeResponseJsons = await listAllIBGEAddress.Execute(paginationBaseRequestJson);
+            try
+            {
+                List<IBGEResponseJson> ibgeResponseJsons = await listAllIBGEAddress.Execute(paginationBaseRequestJson);
 
-            return Ok(new { sucess = true, message = "apenas um teste", ibgeResponseJsons });
+                return Ok(new { sucess = true, message = APIMSG.EXECUTION_SUCCESS_MSG, ibgeResponseJsons });
+            }
+            catch (ValidationException ex)
+            {
+                return BadRequest(new { sucess = false, message = ex.ErrorMessages });
+            }
         }
     }
 }

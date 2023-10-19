@@ -79,6 +79,24 @@ namespace BrazilianAddresses.Exceptions.ResourcesMessage {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &apos;PageIndex&apos; is a required field.
+        /// </summary>
+        public static string EMPTY_PAGEINDEX {
+            get {
+                return ResourceManager.GetString("EMPTY_PAGEINDEX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;PageSize&apos; is a required field.
+        /// </summary>
+        public static string EMPTY_PAGESIZE {
+            get {
+                return ResourceManager.GetString("EMPTY_PAGESIZE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &apos;State&apos; is a required field..
         /// </summary>
         public static string EMPTY_STATE {
@@ -115,6 +133,15 @@ namespace BrazilianAddresses.Exceptions.ResourcesMessage {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The page index value is too large. Please enter an integer value between 0 and {0}.
+        /// </summary>
+        public static string INDEX_TOO_LARGE {
+            get {
+                return ResourceManager.GetString("INDEX_TOO_LARGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to City entered is not valid..
         /// </summary>
         public static string INVALID_CITY {
@@ -129,6 +156,24 @@ namespace BrazilianAddresses.Exceptions.ResourcesMessage {
         public static string INVALID_CODE {
             get {
                 return ResourceManager.GetString("INVALID_CODE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PageIndex entered value is not valid.
+        /// </summary>
+        public static string INVALID_PAGEINDEX {
+            get {
+                return ResourceManager.GetString("INVALID_PAGEINDEX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PageSize entered  value is not valid.
+        /// </summary>
+        public static string INVALID_PAGESIZE {
+            get {
+                return ResourceManager.GetString("INVALID_PAGESIZE", resourceCulture);
             }
         }
         
