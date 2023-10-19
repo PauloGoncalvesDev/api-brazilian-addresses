@@ -20,12 +20,12 @@ namespace BrazilianAddresses.Infrastructure.RepositoryAccess.Repository
 
         public async Task<IBGE> GetIBGEByIBGECode(string ibgeCode)
         {
-            return await _context.IBGE.AsNoTracking().FirstOrDefaultAsync(u => u.IBGECode.Equals(ibgeCode));
+            return await _context.IBGE.AsNoTracking().FirstOrDefaultAsync(u => u.IBGECode.Equals(ibgeCode) && u.DeletionDate == null);
         }
 
         public async Task<IBGE> GetIBGEByIBGECodeToUpdate(string ibgeCode)
         {
-            return await _context.IBGE.FirstOrDefaultAsync(u => u.IBGECode.Equals(ibgeCode));
+            return await _context.IBGE.FirstOrDefaultAsync(u => u.IBGECode.Equals(ibgeCode) && u.DeletionDate == null);
         }
 
         public void Update(IBGE ibge)
@@ -35,7 +35,7 @@ namespace BrazilianAddresses.Infrastructure.RepositoryAccess.Repository
 
         public async Task<List<IBGE>> GetAllIBGEAddress()
         {
-            return await _context.IBGE.AsNoTracking().ToListAsync();
+            return await _context.IBGE.AsNoTracking().Where(ibge => ibge.DeletionDate == null).ToListAsync();
         }
 
         public void Remove(IBGE ibge)
