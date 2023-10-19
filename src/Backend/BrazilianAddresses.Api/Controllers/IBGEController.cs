@@ -3,7 +3,6 @@ using BrazilianAddresses.Communication.Requests;
 using BrazilianAddresses.Communication.Responses;
 using BrazilianAddresses.Exceptions.ResourcesMessage;
 using BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule.Interfaces;
-using BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule;
 
 namespace BrazilianAddresses.Api.Controllers
 {
