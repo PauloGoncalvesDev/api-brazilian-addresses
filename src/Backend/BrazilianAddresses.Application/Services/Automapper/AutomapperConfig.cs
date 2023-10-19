@@ -16,6 +16,8 @@ namespace BrazilianAddresses.Application.Services.Automapper
             MapperIBGEUpdateRequest();
 
             MapperGETAddresses();
+
+            MapperRemoveAddress();
         }
 
         private void MapperIBGEUpdateRequest()
@@ -32,6 +34,13 @@ namespace BrazilianAddresses.Application.Services.Automapper
                 .ForMember(f => f.City, opt => opt.MapFrom(m => m.City))
                 .ForMember(f => f.CreationDate, opt => opt.MapFrom(m => m.CreationDate))
                 .ForMember(f => f.UpdateDate, opt => opt.MapFrom(m => m.UpdateDate));
+        }
+
+        private void MapperRemoveAddress()
+        {
+            CreateMap<IBGE, IBGE>()
+                .ForMember(f => f.DeletionDate, opt => opt.MapFrom(m => DateTime.Now))
+                .ForMember(f => f.UpdateDate, opt => opt.MapFrom(m => DateTime.Now));
         }
     }
 }

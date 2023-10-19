@@ -3,6 +3,7 @@ using BrazilianAddresses.Communication.Requests;
 using BrazilianAddresses.Communication.Responses;
 using BrazilianAddresses.Exceptions.ResourcesMessage;
 using BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule.Interfaces;
+using BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule;
 
 namespace BrazilianAddresses.Api.Controllers
 {
@@ -32,6 +33,15 @@ namespace BrazilianAddresses.Api.Controllers
             List<AddressResponseJson> addressResponseJsons = await listAllIBGEAddresses.Execute(paginationBaseRequestJson);
 
             return Ok(new { sucess = true, message = APIMSG.EXECUTION_SUCCESS_MSG, addressResponseJsons });
+        }
+
+        [HttpDelete]
+        [ProducesResponseType(typeof(IBGEResponseJson), StatusCodes.Status200OK)]
+        public async Task<IActionResult> RemoveIBGE([FromServices] IRemoveIBGE removeIBGE, [FromQuery] IBGERemoveRequestJson ibgeRemoveRequestJson)
+        {
+            IBGEResponseJson ibgeResponseJson = await removeIBGE.Execute(ibgeRemoveRequestJson.IBGECode);
+
+            return Ok(ibgeResponseJson);
         }
     }
 }

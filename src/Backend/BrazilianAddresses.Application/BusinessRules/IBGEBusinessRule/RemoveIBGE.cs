@@ -1,58 +1,53 @@
-﻿using BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule.Interfaces;
-using BrazilianAddresses.Communication.Requests;
+﻿using AutoMapper;
+using BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule.Interfaces;
 using BrazilianAddresses.Communication.Responses;
 using BrazilianAddresses.Domain.Entities;
 using BrazilianAddresses.Domain.Repositories;
 using BrazilianAddresses.Domain.Repositories.IBGERepository;
 using BrazilianAddresses.Exceptions.ExceptionsBase;
 using BrazilianAddresses.Exceptions.ResourcesMessage;
-using FluentValidation.Results;
 
 namespace BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule
 {
     public class RemoveIBGE : IRemoveIBGE
     {
-        private readonly IIBGEWriteOnlyRepository _ibgeWriteOnlyRepository;
+        private readonly IIBGEUpdateOnlyRepository _ibgeUpdateOnlyRepository;
 
-        private readonly IIBGEReadOnlyRepository _ibgeReadOnlyRepository;
+        private readonly IMapper _mapper;
 
         private readonly IWorkUnit _workUnit;
 
-        public RemoveIBGE(IIBGEWriteOnlyRepository ibgeWriteOnlyRepository, IIBGEReadOnlyRepository ibgeReadOnlyRepository, IWorkUnit workUnit)
+        public RemoveIBGE(IIBGEUpdateOnlyRepository ibgeUpdateOnlyRepository, IMapper mapper, IWorkUnit workUnit)
         {
-            _ibgeWriteOnlyRepository = ibgeWriteOnlyRepository;
-            _ibgeReadOnlyRepository = ibgeReadOnlyRepository;
+            _ibgeUpdateOnlyRepository = ibgeUpdateOnlyRepository;
+            _mapper = mapper;
             _workUnit = workUnit;
         }
 
         public async Task<IBGEResponseJson> Execute(string iBGECode)
         {
-            await ValidateIBGE(iBGECode);
+            IBGE ibgeToRemove = await _ibgeUpdateOnlyRepository.GetIBGEByIBGECodeToUpdate(iBGECode);
+
+            await ValidateIBGE(ibgeToRemove);
+
+            _mapper.Map(ibgeToRemove, ibgeToRemove);
+
+            _ibgeUpdateOnlyRepository.Update(ibgeToRemove);
 
             await _workUnit.Commit();
 
             return new IBGEResponseJson
             {
-                Message = APIMSG.IBGE_CREATED,
+                Message = APIMSG.IBGE_REMOVED,
                 Success = true,
                 IBGECode = iBGECode
             };
         }
 
-        private async Task ValidateIBGE(string iBGECode)
+        private async Task ValidateIBGE(IBGE ibge)
         {
-            ValidationResult validationResult = new ValidationResult();
-
-            IBGE existingIBGE = await _ibgeReadOnlyRepository.GetIBGEByIBGECode(iBGECode);
-
-            if (existingIBGE == null)
-                validationResult.Errors.Add(new FluentValidation.Results.ValidationFailure(iBGECode, APIMSG.EXISTING_CODE));
-
-            if (!validationResult.IsValid)
-            {
-                List<string> errorMessages = validationResult.Errors.Select(error => error.ErrorMessage).ToList();
-                throw new ValidationException(errorMessages);
-            }
+            if (ibge == null)
+                throw new ValidationException(APIMSG.NO_EXISTING_CODE);
         }
     }
 }
