@@ -117,14 +117,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BLANK_PAGE" xml:space="preserve">
+    <value>Blank page, no more records. Go back a page or reduce the number of records per page.</value>
+  </data>
   <data name="EMPTY_CITY" xml:space="preserve">
     <value>'City' is a required field.</value>
   </data>
   <data name="EMPTY_IBGECODE" xml:space="preserve">
     <value>'IBGECode' is a required field.</value>
   </data>
+  <data name="EMPTY_PAGEINDEX" xml:space="preserve">
+    <value>'PageIndex' is a required field.</value>
+  </data>
+  <data name="EMPTY_PAGESIZE" xml:space="preserve">
+    <value>'PageSize' is a required field.</value>
+  </data>
   <data name="EMPTY_STATE" xml:space="preserve">
     <value>'State' is a required field.</value>
+  </data>
+  <data name="EXECUTION_SUCCESS_MSG" xml:space="preserve">
+    <value>Method executed successfully.</value>
   </data>
   <data name="EXISTING_CODE" xml:space="preserve">
     <value>The city code entered is already registered.</value>
@@ -132,16 +144,31 @@
   <data name="IBGE_CREATED" xml:space="preserve">
     <value>Location entered was successfully registered.</value>
   </data>
+  <data name="INDEX_TOO_LARGE" xml:space="preserve">
+    <value>The page index value is too large. Please enter an integer value between 0 and {0}.</value>
+  </data>
   <data name="INVALID_CITY" xml:space="preserve">
     <value>City entered is not valid.</value>
   </data>
   <data name="INVALID_CODE" xml:space="preserve">
     <value>City code entered is not valid.</value>
   </data>
+  <data name="INVALID_PAGEINDEX" xml:space="preserve">
+    <value>PageIndex entered value is not valid.</value>
+  </data>
+  <data name="INVALID_PAGESIZE" xml:space="preserve">
+    <value>PageSize entered  value is not valid.</value>
+  </data>
   <data name="INVALID_STATE" xml:space="preserve">
     <value>The state reported does not exist.</value>
   </data>
+  <data name="NO_EXISTING_CODE" xml:space="preserve">
+    <value>The city code entered is not registered.</value>
+  </data>
   <data name="UNKNOW_ERROR" xml:space="preserve">
     <value>Unknow error.</value>
+  </data>
+  <data name="UPDATED_IBGE" xml:space="preserve">
+    <value>Requested information has been successfully updated.</value>
   </data>
 </root>

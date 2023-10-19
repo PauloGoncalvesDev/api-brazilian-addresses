@@ -1,7 +1,8 @@
-﻿using BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule.Interfaces;
+﻿using Microsoft.AspNetCore.Mvc;
 using BrazilianAddresses.Communication.Requests;
 using BrazilianAddresses.Communication.Responses;
-using Microsoft.AspNetCore.Mvc;
+using BrazilianAddresses.Exceptions.ResourcesMessage;
+using BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule.Interfaces;
 
 namespace BrazilianAddresses.Api.Controllers
 {
@@ -14,6 +15,23 @@ namespace BrazilianAddresses.Api.Controllers
             IBGEResponseJson ibgeResponseJson = await createIBGE.Execute(ibgeRequestJson);
 
             return Created(string.Empty, ibgeResponseJson);
+        }
+
+        [HttpPut]
+        [ProducesResponseType(typeof(IBGEResponseJson), StatusCodes.Status200OK)]
+        public async Task<IActionResult> UpdateIBGE([FromServices] IUpdateIBGE updateIBGE, [FromBody] IBGEUpdateRequestJson ibgeUpdateRequestJson)
+        {
+            IBGEResponseJson ibgeResponseJson = await updateIBGE.Execute(ibgeUpdateRequestJson);
+
+            return Ok(ibgeResponseJson);
+        }
+
+        [HttpGet("GetAllIBGEAddresses")]
+        public async Task<IActionResult> ListAllIBGEAddresses([FromServices] IListAllIBGEAddresses listAllIBGEAddresses, [FromQuery] PaginationBaseRequestJson paginationBaseRequestJson)
+        {
+            List<AddressResponseJson> addressResponseJsons = await listAllIBGEAddresses.Execute(paginationBaseRequestJson);
+
+            return Ok(new { sucess = true, message = APIMSG.EXECUTION_SUCCESS_MSG, addressResponseJsons });
         }
     }
 }

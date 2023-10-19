@@ -1,10 +1,10 @@
-﻿using BrazilianAddresses.Domain.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using BrazilianAddresses.Domain.Entities;
 using BrazilianAddresses.Domain.Repositories.IBGERepository;
-using Microsoft.EntityFrameworkCore;
 
 namespace BrazilianAddresses.Infrastructure.RepositoryAccess.Repository
 {
-    public class IBGERepository : IIBGEReadOnlyRepository, IIBGEWriteOnlyRepository, IIBGERemoveOnlyRepository
+    public class IBGERepository : IIBGEReadOnlyRepository, IIBGEWriteOnlyRepository, IIBGEUpdateOnlyRepository, IIBGERemoveOnlyRepository
     {
         private readonly BrazilianAddressesContext _context;
 
@@ -20,8 +20,22 @@ namespace BrazilianAddresses.Infrastructure.RepositoryAccess.Repository
 
         public async Task<IBGE> GetIBGEByIBGECode(string ibgeCode)
         {
-            return await _context.IBGE.AsNoTracking()
-                .FirstOrDefaultAsync(u => u.IBGECode.Equals(ibgeCode));
+            return await _context.IBGE.AsNoTracking().FirstOrDefaultAsync(u => u.IBGECode.Equals(ibgeCode));
+        }
+
+        public async Task<IBGE> GetIBGEByIBGECodeToUpdate(string ibgeCode)
+        {
+            return await _context.IBGE.FirstOrDefaultAsync(u => u.IBGECode.Equals(ibgeCode));
+        }
+
+        public void Update(IBGE ibge)
+        {
+            _context.IBGE.Update(ibge);
+        }
+
+        public async Task<List<IBGE>> GetAllIBGEAddress()
+        {
+            return await _context.IBGE.AsNoTracking().ToListAsync();
         }
 
         public void Remove(IBGE ibge)

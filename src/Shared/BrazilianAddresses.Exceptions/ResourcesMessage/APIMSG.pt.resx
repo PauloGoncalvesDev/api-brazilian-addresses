@@ -117,14 +117,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BLANK_PAGE" xml:space="preserve">
+    <value>Página em branco, sem mais registros. Volte uma página ou reduza o número de registros por página.</value>
+  </data>
   <data name="EMPTY_CITY" xml:space="preserve">
     <value>'City' é um campo obrigatório.</value>
   </data>
   <data name="EMPTY_IBGECODE" xml:space="preserve">
     <value>'IBGECode' é um campo obrigatório.</value>
   </data>
+  <data name="EMPTY_PAGEINDEX" xml:space="preserve">
+    <value>'PageIndex' é um campo obrigatório.</value>
+  </data>
+  <data name="EMPTY_PAGESIZE" xml:space="preserve">
+    <value>'PageSize' é um campo obrigatório.</value>
+  </data>
   <data name="EMPTY_STATE" xml:space="preserve">
     <value>'State' é um campo obrigatório.</value>
+  </data>
+  <data name="EXECUTION_SUCCESS_MSG" xml:space="preserve">
+    <value>Método executado com sucesso.</value>
   </data>
   <data name="EXISTING_CODE" xml:space="preserve">
     <value>O código de município informado já está registrado.</value>
@@ -132,16 +144,31 @@
   <data name="IBGE_CREATED" xml:space="preserve">
     <value>Localidade informada foi registrado com sucesso.</value>
   </data>
+  <data name="INDEX_TOO_LARGE" xml:space="preserve">
+    <value>O valor do índice da página é muito grande. Por favor insira um valor inteiro entre 0 e {0}.</value>
+  </data>
   <data name="INVALID_CITY" xml:space="preserve">
     <value>Cidade informada não é válida.</value>
   </data>
   <data name="INVALID_CODE" xml:space="preserve">
     <value>Código de município informado não é válido.</value>
   </data>
+  <data name="INVALID_PAGEINDEX" xml:space="preserve">
+    <value>O valor inserido no PageIndex não é válido.</value>
+  </data>
+  <data name="INVALID_PAGESIZE" xml:space="preserve">
+    <value>O valor inserido no PageSize não é válido.</value>
+  </data>
   <data name="INVALID_STATE" xml:space="preserve">
     <value>O estado informado não existe.</value>
   </data>
+  <data name="NO_EXISTING_CODE" xml:space="preserve">
+    <value>O código de município informado não está registrado.</value>
+  </data>
   <data name="UNKNOW_ERROR" xml:space="preserve">
     <value>Erro desconhecido.</value>
+  </data>
+  <data name="UPDATED_IBGE" xml:space="preserve">
+    <value>Informações solicitadas foram atualizadas com sucesso.</value>
   </data>
 </root>
