@@ -61,6 +61,15 @@ namespace BrazilianAddresses.Exceptions.ResourcesMessage {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Blank page, no more records. Go back a page or reduce the number of records per page..
+        /// </summary>
+        public static string BLANK_PAGE {
+            get {
+                return ResourceManager.GetString("BLANK_PAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &apos;City&apos; is a required field..
         /// </summary>
         public static string EMPTY_CITY {

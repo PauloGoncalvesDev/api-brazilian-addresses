@@ -3,8 +3,8 @@ using BrazilianAddresses.Communication.Responses;
 
 namespace BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule.Interfaces
 {
-    public interface IListAllIBGEAddress
+    public interface IListAllIBGEAddresses
     {
-        public Task<List<IBGEResponseJson>> Execute(PaginationBaseRequestJson pagination);
+        public Task<List<AddressResponseJson>> Execute(PaginationBaseRequestJson pagination);
     }
 }
