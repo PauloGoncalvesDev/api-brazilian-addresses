@@ -88,7 +88,7 @@ namespace BrazilianAddresses.Exceptions.ResourcesMessage {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &apos;PageIndex&apos; is a required field.
+        ///   Looks up a localized string similar to &apos;PageIndex&apos; is a required field..
         /// </summary>
         public static string EMPTY_PAGEINDEX {
             get {
@@ -97,7 +97,7 @@ namespace BrazilianAddresses.Exceptions.ResourcesMessage {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &apos;PageSize&apos; is a required field.
+        ///   Looks up a localized string similar to &apos;PageSize&apos; is a required field..
         /// </summary>
         public static string EMPTY_PAGESIZE {
             get {
@@ -115,7 +115,7 @@ namespace BrazilianAddresses.Exceptions.ResourcesMessage {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Method executed successfully.
+        ///   Looks up a localized string similar to Method executed successfully..
         /// </summary>
         public static string EXECUTION_SUCCESS_MSG {
             get {
@@ -142,7 +142,7 @@ namespace BrazilianAddresses.Exceptions.ResourcesMessage {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The page index value is too large. Please enter an integer value between 0 and {0}.
+        ///   Looks up a localized string similar to The page index value is too large. Please enter an integer value between 0 and {0}..
         /// </summary>
         public static string INDEX_TOO_LARGE {
             get {
@@ -169,7 +169,7 @@ namespace BrazilianAddresses.Exceptions.ResourcesMessage {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to PageIndex entered value is not valid.
+        ///   Looks up a localized string similar to PageIndex entered value is not valid..
         /// </summary>
         public static string INVALID_PAGEINDEX {
             get {
@@ -178,7 +178,7 @@ namespace BrazilianAddresses.Exceptions.ResourcesMessage {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to PageSize entered  value is not valid.
+        ///   Looks up a localized string similar to PageSize entered  value is not valid..
         /// </summary>
         public static string INVALID_PAGESIZE {
             get {
@@ -196,11 +196,29 @@ namespace BrazilianAddresses.Exceptions.ResourcesMessage {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The city code entered is not registered..
+        /// </summary>
+        public static string NO_EXISTING_CODE {
+            get {
+                return ResourceManager.GetString("NO_EXISTING_CODE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unknow error..
         /// </summary>
         public static string UNKNOW_ERROR {
             get {
                 return ResourceManager.GetString("UNKNOW_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Requested information has been successfully updated..
+        /// </summary>
+        public static string UPDATED_IBGE {
+            get {
+                return ResourceManager.GetString("UPDATED_IBGE", resourceCulture);
             }
         }
     }

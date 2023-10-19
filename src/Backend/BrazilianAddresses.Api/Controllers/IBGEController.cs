@@ -17,6 +17,15 @@ namespace BrazilianAddresses.Api.Controllers
             return Created(string.Empty, ibgeResponseJson);
         }
 
+        [HttpPut]
+        [ProducesResponseType(typeof(IBGEResponseJson), StatusCodes.Status200OK)]
+        public async Task<IActionResult> UpdateIBGE([FromServices] IUpdateIBGE updateIBGE, [FromBody] IBGEUpdateRequestJson ibgeUpdateRequestJson)
+        {
+            IBGEResponseJson ibgeResponseJson = await updateIBGE.Execute(ibgeUpdateRequestJson);
+
+            return Ok(ibgeResponseJson);
+        }
+
         [HttpGet("GetAllIBGEAddresses")]
         public async Task<IActionResult> ListAllIBGEAddresses([FromServices] IListAllIBGEAddresses listAllIBGEAddresses, [FromQuery] PaginationBaseRequestJson paginationBaseRequestJson)
         {

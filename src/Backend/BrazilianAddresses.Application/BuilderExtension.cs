@@ -14,6 +14,7 @@ namespace BrazilianAddresses.Application
         private static void AddApplicationIBGE(IServiceCollection serviceDescriptors)
         {
             serviceDescriptors.AddScoped<ICreateIBGE, CreateIBGE>();
+            serviceDescriptors.AddScoped<IUpdateIBGE, UpdateIBGE>();
             serviceDescriptors.AddScoped<IListAllIBGEAddresses, ListAllIBGEAddresses>();
         }
     }
