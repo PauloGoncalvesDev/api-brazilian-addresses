@@ -1,6 +1,6 @@
-﻿using BrazilianAddresses.Domain.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using BrazilianAddresses.Domain.Entities;
 using BrazilianAddresses.Domain.Repositories.IBGERepository;
-using Microsoft.EntityFrameworkCore;
 
 namespace BrazilianAddresses.Infrastructure.RepositoryAccess.Repository
 {
@@ -20,8 +20,7 @@ namespace BrazilianAddresses.Infrastructure.RepositoryAccess.Repository
 
         public async Task<IBGE> GetIBGEByIBGECode(string ibgeCode)
         {
-            return await _context.IBGE.AsNoTracking()
-                .FirstOrDefaultAsync(u => u.IBGECode.Equals(ibgeCode));
+            return await _context.IBGE.AsNoTracking().FirstOrDefaultAsync(u => u.IBGECode.Equals(ibgeCode));
         }
 
         public async Task<IBGE> GetIBGEByIBGECodeToUpdate(string ibgeCode)
@@ -32,6 +31,11 @@ namespace BrazilianAddresses.Infrastructure.RepositoryAccess.Repository
         public void Update(IBGE ibge)
         {
             _context.IBGE.Update(ibge);
+        }
+
+        public async Task<List<IBGE>> GetAllIBGEAddress()
+        {
+            return await _context.IBGE.AsNoTracking().ToListAsync();
         }
     }
 }

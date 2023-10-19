@@ -6,4 +6,8 @@
     <Nullable>disable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BrazilianAddresses.Exceptions\BrazilianAddresses.Exceptions.csproj" />
+  </ItemGroup>
+
 </Project>
