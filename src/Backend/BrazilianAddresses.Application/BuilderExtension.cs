@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule;
+using BrazilianAddresses.Application.BusinessRules.UserBusinessRule;
 using BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule.Interfaces;
+using BrazilianAddresses.Application.BusinessRules.UserBusinessRule.Interfaces;
 
 namespace BrazilianAddresses.Application
 {
@@ -9,6 +11,7 @@ namespace BrazilianAddresses.Application
         public static void AddApplication(this IServiceCollection serviceDescriptors)
         {
             AddApplicationIBGE(serviceDescriptors);
+            AddApplicationUser(serviceDescriptors);
         }
 
         private static void AddApplicationIBGE(IServiceCollection serviceDescriptors)
@@ -17,6 +20,11 @@ namespace BrazilianAddresses.Application
             serviceDescriptors.AddScoped<IUpdateIBGE, UpdateIBGE>();
             serviceDescriptors.AddScoped<IListAllIBGEAddresses, ListAllIBGEAddresses>();
             serviceDescriptors.AddScoped<IRemoveIBGE, RemoveIBGE>();
+        }
+
+        private static void AddApplicationUser(IServiceCollection serviceDescriptors)
+        {
+            serviceDescriptors.AddScoped<ICreateUser, CreateUser>();
         }
     }
 }
