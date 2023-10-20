@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using BrazilianAddresses.Application.Services.Cryptography;
 using BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule;
 using BrazilianAddresses.Application.BusinessRules.UserBusinessRule;
 using BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule.Interfaces;
@@ -12,6 +13,7 @@ namespace BrazilianAddresses.Application
         {
             AddApplicationIBGE(serviceDescriptors);
             AddApplicationUser(serviceDescriptors);
+            AddApplicationServicePasswordEncryption(serviceDescriptors);
         }
 
         private static void AddApplicationIBGE(IServiceCollection serviceDescriptors)
@@ -25,6 +27,11 @@ namespace BrazilianAddresses.Application
         private static void AddApplicationUser(IServiceCollection serviceDescriptors)
         {
             serviceDescriptors.AddScoped<ICreateUser, CreateUser>();
+        }
+
+        private static void AddApplicationServicePasswordEncryption(IServiceCollection serviceDescriptors)
+        {
+            serviceDescriptors.AddScoped(options => new PasswordEncryption());
         }
     }
 }

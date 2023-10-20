@@ -37,8 +37,8 @@ namespace BrazilianAddresses.Application.BusinessRules.UserBusinessRule
             await ValidateUser(userRequestJson);
 
             User user = _mapper.Map<User>(userRequestJson);
-            
-            user.Salt = new Guid().ToString().Remove('-');
+
+            user.Salt = Guid.NewGuid().ToString().Replace("-", "");
 
             user.Password = _passwordEncryption.Encrypt(userRequestJson.Password, user.Salt);
 

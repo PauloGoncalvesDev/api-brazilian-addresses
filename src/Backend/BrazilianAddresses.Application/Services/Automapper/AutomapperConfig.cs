@@ -51,7 +51,7 @@ namespace BrazilianAddresses.Application.Services.Automapper
                 .ForMember(f => f.Email, opt => opt.MapFrom(m => m.Email))
                 .ForMember(r => r.Password, config => config.Ignore())
                 .ForMember(r => r.Salt, config => config.Ignore())
-                .ForMember(f => f.UserRole, opt => opt.MapFrom(m => m.UserRole))
+                .ForMember(f => f.Role, opt => opt.MapFrom(m => m.UserRole))
                 .ForMember(f => f.CreationDate, opt => opt.MapFrom(m => DateTime.Now))
                 .ForMember(f => f.UpdateDate, opt => opt.MapFrom(m => DateTime.Now));
         }

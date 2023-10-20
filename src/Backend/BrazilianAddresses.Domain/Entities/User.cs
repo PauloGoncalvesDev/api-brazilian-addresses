@@ -10,6 +10,6 @@ namespace BrazilianAddresses.Domain.Entities
 
         public string Salt { get; set; }
 
-        public UserRoleEnum UserRole { get; set; }
+        public UserRoleEnum Role { get; set; }
     }
 }
