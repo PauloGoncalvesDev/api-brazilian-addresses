@@ -31,9 +31,10 @@ namespace BrazilianAddresses.Application.Services.Automapper
             CreateMap<IBGE, AddressResponseJson>()
                 .ForMember(f => f.IBGECode, opt => opt.MapFrom(m => m.IBGECode))
                 .ForMember(f => f.State, opt => opt.MapFrom(m => m.State))
-                .ForMember(f => f.City, opt => opt.MapFrom(m => m.City))
-                .ForMember(f => f.CreationDate, opt => opt.MapFrom(m => m.CreationDate))
-                .ForMember(f => f.UpdateDate, opt => opt.MapFrom(m => m.UpdateDate));
+                .ForMember(f => f.City, opt => opt.MapFrom(m => m.City));
+
+            CreateMap<AddressesByStateRequestJson, AddressesByStateRequestJson>()
+                .ForMember(f => f.State, opt => opt.MapFrom(m => m.State.ToLower().Trim()));
         }
 
         private void MapperRemoveAddress()
