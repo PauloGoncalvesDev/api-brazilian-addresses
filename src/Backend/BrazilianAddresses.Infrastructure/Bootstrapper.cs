@@ -44,7 +44,8 @@ namespace BrazilianAddresses.Infrastructure
                     .AddScoped<IUserReadOnlyRepository, UserRepository>()
                     .AddScoped<IIBGEReadOnlyRepository, IBGERepository>()
                     .AddScoped<IIBGEWriteOnlyRepository, IBGERepository>()
-                    .AddScoped<IIBGEUpdateOnlyRepository, IBGERepository>();
+                    .AddScoped<IIBGEUpdateOnlyRepository, IBGERepository>()
+                    .AddScoped<IIBGERemoveOnlyRepository, IBGERepository>();
         }
 
         private static void AddFluentMigrator(IServiceCollection services, IConfiguration configurationManager)

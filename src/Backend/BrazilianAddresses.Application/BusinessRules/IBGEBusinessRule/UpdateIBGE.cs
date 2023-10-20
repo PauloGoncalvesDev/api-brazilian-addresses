@@ -20,7 +20,7 @@ namespace BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule
 
         private readonly IWorkUnit _workUnit;
 
-        public UpdateIBGE(IIBGEUpdateOnlyRepository ibgeUpdateOnlyRepository,  IMapper mapper, IWorkUnit workUnit)
+        public UpdateIBGE(IIBGEUpdateOnlyRepository ibgeUpdateOnlyRepository, IMapper mapper, IWorkUnit workUnit)
         {
             _ibgeUpdateOnlyRepository = ibgeUpdateOnlyRepository;
             _mapper = mapper;

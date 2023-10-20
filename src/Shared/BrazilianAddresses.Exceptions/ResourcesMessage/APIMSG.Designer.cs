@@ -142,6 +142,15 @@ namespace BrazilianAddresses.Exceptions.ResourcesMessage {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Location informed was successfully removed..
+        /// </summary>
+        public static string IBGE_REMOVED {
+            get {
+                return ResourceManager.GetString("IBGE_REMOVED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The page index value is too large. Please enter an integer value between 0 and {0}..
         /// </summary>
         public static string INDEX_TOO_LARGE {

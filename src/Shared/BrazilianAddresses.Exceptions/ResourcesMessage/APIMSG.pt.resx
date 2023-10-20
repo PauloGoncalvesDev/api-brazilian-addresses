@@ -144,6 +144,9 @@
   <data name="IBGE_CREATED" xml:space="preserve">
     <value>Localidade informada foi registrado com sucesso.</value>
   </data>
+  <data name="IBGE_REMOVED" xml:space="preserve">
+    <value>Localidade informada foi removida com sucesso.</value>
+  </data>
   <data name="INDEX_TOO_LARGE" xml:space="preserve">
     <value>O valor do índice da página é muito grande. Por favor insira um valor inteiro entre 0 e {0}.</value>
   </data>

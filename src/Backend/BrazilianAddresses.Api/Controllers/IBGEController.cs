@@ -33,5 +33,14 @@ namespace BrazilianAddresses.Api.Controllers
 
             return Ok(new { sucess = true, message = APIMSG.EXECUTION_SUCCESS_MSG, addressResponseJsons });
         }
+
+        [HttpDelete]
+        [ProducesResponseType(typeof(IBGEResponseJson), StatusCodes.Status200OK)]
+        public async Task<IActionResult> RemoveIBGE([FromServices] IRemoveIBGE removeIBGE, [FromQuery] IBGERemoveRequestJson ibgeRemoveRequestJson)
+        {
+            IBGEResponseJson ibgeResponseJson = await removeIBGE.Execute(ibgeRemoveRequestJson.IBGECode);
+
+            return Ok(ibgeResponseJson);
+        }
     }
 }
