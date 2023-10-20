@@ -133,6 +133,15 @@ namespace BrazilianAddresses.Exceptions.ResourcesMessage {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Already exists a User with this e-mail {0}..
+        /// </summary>
+        public static string EXISTING_EMAIL {
+            get {
+                return ResourceManager.GetString("EXISTING_EMAIL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Location entered was successfully registered..
         /// </summary>
         public static string IBGE_CREATED {
@@ -228,6 +237,15 @@ namespace BrazilianAddresses.Exceptions.ResourcesMessage {
         public static string UPDATED_IBGE {
             get {
                 return ResourceManager.GetString("UPDATED_IBGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User created successfully..
+        /// </summary>
+        public static string USER_CREATED {
+            get {
+                return ResourceManager.GetString("USER_CREATED", resourceCulture);
             }
         }
     }

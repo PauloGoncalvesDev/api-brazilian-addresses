@@ -7,7 +7,7 @@ namespace BrazilianAddresses.Infrastructure.RepositoryAccess
     {
         public BrazilianAddressesContext(DbContextOptions<BrazilianAddressesContext> options) : base(options) { }
 
-        public DbSet<User> Users { get; set; }
+        public DbSet<User> User { get; set; }
         
         public DbSet<IBGE> IBGE { get; set; }
 

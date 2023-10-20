@@ -141,6 +141,9 @@
   <data name="EXISTING_CODE" xml:space="preserve">
     <value>The city code entered is already registered.</value>
   </data>
+  <data name="EXISTING_EMAIL" xml:space="preserve">
+    <value>Already exists a User with this e-mail {0}.</value>
+  </data>
   <data name="IBGE_CREATED" xml:space="preserve">
     <value>Location entered was successfully registered.</value>
   </data>
@@ -173,5 +176,8 @@
   </data>
   <data name="UPDATED_IBGE" xml:space="preserve">
     <value>Requested information has been successfully updated.</value>
+  </data>
+  <data name="USER_CREATED" xml:space="preserve">
+    <value>User created successfully.</value>
   </data>
 </root>

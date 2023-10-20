@@ -1,4 +1,6 @@
-﻿namespace BrazilianAddresses.Domain.Entities
+﻿using BrazilianAddresses.Domain.Enum;
+
+namespace BrazilianAddresses.Domain.Entities
 {
     public class User : BaseEntity
     {
@@ -8,6 +10,6 @@
 
         public string Salt { get; set; }
 
-        public int Role { get; set; }
+        public UserRoleEnum UserRole { get; set; }
     }
 }

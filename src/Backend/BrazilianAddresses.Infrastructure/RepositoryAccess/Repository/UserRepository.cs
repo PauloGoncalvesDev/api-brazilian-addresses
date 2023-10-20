@@ -15,12 +15,12 @@ namespace BrazilianAddresses.Infrastructure.RepositoryAccess.Repository
 
         public async Task Add(User user)
         {
-            await _context.Users.AddAsync(user);
+            await _context.User.AddAsync(user);
         }
 
         public async Task<bool> ExistsUserWithEmail(string email)
         {
-            return await _context.Users.AnyAsync(user => user.Email.Equals(email));
+            return await _context.User.AnyAsync(user => user.Email.Equals(email) && user.DeletionDate == null);
         }
     }
 }
