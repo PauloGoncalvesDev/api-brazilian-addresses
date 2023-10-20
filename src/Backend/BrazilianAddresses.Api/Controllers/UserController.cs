@@ -9,9 +9,9 @@ namespace BrazilianAddresses.Api.Controllers
     {
         [HttpPost]
         [ProducesResponseType(typeof(BaseResponseJson), StatusCodes.Status201Created)]
-        public async Task<IActionResult> CreateUser([FromServices] ICreateUser registerUser, [FromBody] UserRequestJson userRequestJson)
+        public async Task<IActionResult> CreateUser([FromServices] ICreateUser createUser, [FromBody] UserRequestJson userRequestJson)
         {
-            BaseResponseJson userResponseJson = await registerUser.Execute(userRequestJson);
+            BaseResponseJson userResponseJson = await createUser.Execute(userRequestJson);
 
             return Created(string.Empty, userResponseJson);
         }
