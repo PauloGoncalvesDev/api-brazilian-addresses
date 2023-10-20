@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BrazilianAddresses.Application.BusinessRules.UserBusinessRule.Interfaces;
 using BrazilianAddresses.Application.Services.Cryptography;
+using BrazilianAddresses.Application.Validators.UserValidator;
 using BrazilianAddresses.Communication.Requests;
 using BrazilianAddresses.Communication.Responses;
 using BrazilianAddresses.Domain.Entities;
@@ -8,6 +9,7 @@ using BrazilianAddresses.Domain.Repositories;
 using BrazilianAddresses.Domain.Repositories.UserRepository;
 using BrazilianAddresses.Exceptions.ExceptionsBase;
 using BrazilianAddresses.Exceptions.ResourcesMessage;
+using FluentValidation.Results;
 
 namespace BrazilianAddresses.Application.BusinessRules.UserBusinessRule
 {
@@ -55,6 +57,14 @@ namespace BrazilianAddresses.Application.BusinessRules.UserBusinessRule
 
         private async Task ValidateUser(UserRequestJson userRequestJson)
         {
+            ValidationResult validationResult = new ValidateUser().Validate(userRequestJson);
+
+            if (!validationResult.IsValid)
+            {
+                List<string> errorMessage = validationResult.Errors.Select(error => error.ErrorMessage).ToList();
+                throw new ValidationException(errorMessage);
+            }
+
             bool userExists = await _userReadOnlyRepository.ExistsUserWithEmail(userRequestJson.Email);
 
             if (userExists)

@@ -123,6 +123,9 @@
   <data name="EMPTY_CITY" xml:space="preserve">
     <value>'City' is a required field.</value>
   </data>
+  <data name="EMPTY_EMAIL" xml:space="preserve">
+    <value>'Email' is a required field.</value>
+  </data>
   <data name="EMPTY_IBGECODE" xml:space="preserve">
     <value>'IBGECode' is a required field.</value>
   </data>
@@ -132,8 +135,14 @@
   <data name="EMPTY_PAGESIZE" xml:space="preserve">
     <value>'PageSize' is a required field.</value>
   </data>
+  <data name="EMPTY_PASSWORD" xml:space="preserve">
+    <value>'Password' is a required field.</value>
+  </data>
   <data name="EMPTY_STATE" xml:space="preserve">
     <value>'State' is a required field.</value>
+  </data>
+  <data name="EMPTY_USERROLE" xml:space="preserve">
+    <value>'UserRole' is a required field.</value>
   </data>
   <data name="EXECUTION_SUCCESS_MSG" xml:space="preserve">
     <value>Method executed successfully.</value>
@@ -159,6 +168,9 @@
   <data name="INVALID_CODE" xml:space="preserve">
     <value>City code entered is not valid.</value>
   </data>
+  <data name="INVALID_EMAIL" xml:space="preserve">
+    <value>Email informed is invalid.</value>
+  </data>
   <data name="INVALID_PAGEINDEX" xml:space="preserve">
     <value>PageIndex entered value is not valid.</value>
   </data>
@@ -167,6 +179,12 @@
   </data>
   <data name="INVALID_STATE" xml:space="preserve">
     <value>The state reported does not exist.</value>
+  </data>
+  <data name="INVALID_USERROLE" xml:space="preserve">
+    <value>UserRole informed is not valid.</value>
+  </data>
+  <data name="LENGTH_PASSWORD" xml:space="preserve">
+    <value>Password must have at least size {0}.</value>
   </data>
   <data name="NO_EXISTING_CODE" xml:space="preserve">
     <value>The city code entered is not registered.</value>
