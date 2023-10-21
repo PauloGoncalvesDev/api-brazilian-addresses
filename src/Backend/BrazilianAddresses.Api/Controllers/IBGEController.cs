@@ -32,7 +32,7 @@ namespace BrazilianAddresses.Api.Controllers
         {
             List<AddressResponseJson> addressResponseJsons = await getIBGEAddresses.Execute(paginationBaseRequestJson);
 
-            return Ok(new { sucess = true, message = APIMSG.EXECUTION_SUCCESS_MSG, addressResponseJsons });
+            return Ok(new { sucess = true, message = APIMSG.LISTING_COMPLETED, addressResponseJsons });
         }
 
         [HttpDelete]
@@ -50,7 +50,7 @@ namespace BrazilianAddresses.Api.Controllers
         {
             List<AddressResponseJson> addressResponseJsons = await getIBGEAddresses.Execute(addressesByStateRequestJson);
 
-            return Ok(new { sucess = true, message = APIMSG.EXECUTION_SUCCESS_MSG, addressResponseJsons });
+            return Ok(new { sucess = true, message = APIMSG.LISTING_COMPLETED, addressResponseJsons });
         }
     }
 }
