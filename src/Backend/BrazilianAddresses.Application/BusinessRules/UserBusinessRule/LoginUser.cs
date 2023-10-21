@@ -29,20 +29,20 @@ namespace BrazilianAddresses.Application.BusinessRules.UserBusinessRule
         {
             User user = await _userReadOnlyRepository.GetUserByEmail(userLoginRequest.Email);
 
-            if (user == null)
-                throw new LoginException(APIMSG.LOGIN_ERROR);
-
-            User loginUser = await _userReadOnlyRepository.GetUserLogin(user.Email, _passwordEncryption.Encrypt(user.Password, user.Salt));
-
-            if (loginUser == null)
-                throw new LoginException(APIMSG.LOGIN_ERROR);
+            ValidateLoginUser(user, userLoginRequest.Password);
 
             return new UserLoginResponseJson
             {
                 Message = APIMSG.LOGIN_COMPLETED,
                 Success = true,
-                Token = _tokenController.GenerateTokenJwt(loginUser.Email)
+                Token = _tokenController.GenerateTokenJwt(user.Email)
             };
+        }
+
+        private void ValidateLoginUser(User user, string requestPassword)
+        {
+            if (user == null || _passwordEncryption.Encrypt(requestPassword, user.Salt) != user.Password)
+                throw new LoginException(APIMSG.LOGIN_ERROR);
         }
     }
 }
