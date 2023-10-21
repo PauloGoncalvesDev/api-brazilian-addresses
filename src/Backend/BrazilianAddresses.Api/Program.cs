@@ -1,15 +1,19 @@
+using System.Text.Json.Serialization;
 using BrazilianAddresses.Api.Filters;
 using BrazilianAddresses.Application;
-using BrazilianAddresses.Application.Services.Automapper;
-using BrazilianAddresses.Domain.Extension;
 using BrazilianAddresses.Infrastructure;
+using BrazilianAddresses.Domain.Extension;
 using BrazilianAddresses.Infrastructure.Migrations;
+using BrazilianAddresses.Application.Services.Automapper;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+});
 
-builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

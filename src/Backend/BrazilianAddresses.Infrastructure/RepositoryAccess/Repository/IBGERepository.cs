@@ -33,7 +33,7 @@ namespace BrazilianAddresses.Infrastructure.RepositoryAccess.Repository
             _context.IBGE.Update(ibge);
         }
 
-        public async Task<List<IBGE>> GetAllIBGEAddress()
+        public async Task<List<IBGE>> GetAllIBGEAddresses()
         {
             return await _context.IBGE.AsNoTracking().Where(ibge => ibge.DeletionDate == null).ToListAsync();
         }
@@ -41,6 +41,11 @@ namespace BrazilianAddresses.Infrastructure.RepositoryAccess.Repository
         public void Remove(IBGE ibge)
         {
             _context.IBGE.Update(ibge);
+        }
+
+        public async Task<List<IBGE>> GetIBGEAddressesByState(string state)
+        {
+            return await _context.IBGE.AsNoTracking().Where(x => x.State == state && x.DeletionDate == null).ToListAsync();
         }
     }
 }
