@@ -21,6 +21,8 @@ namespace BrazilianAddresses.Api.Filters
         {
             if (context.Exception is ValidationException)
                 HandleValidationException(context);
+            else if(context.Exception is LoginException)
+                HandleLoginException(context);
         }
 
         private void HandleValidationException(ExceptionContext context)
@@ -29,6 +31,14 @@ namespace BrazilianAddresses.Api.Filters
 
             context.HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
             context.Result = new ObjectResult(new ErrorBaseResponseJson(validationsErrors.ErrorMessages, false));
+        }
+
+        private void HandleLoginException(ExceptionContext context)
+        {
+            LoginException loginException = context.Exception as LoginException;
+
+            context.HttpContext.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
+            context.Result = new ObjectResult(new ErrorBaseResponseJson(loginException.ErrorMessages, false));
         }
 
         private void HandleDefaultException(ExceptionContext context)
