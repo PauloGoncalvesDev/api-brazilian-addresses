@@ -32,7 +32,7 @@ namespace BrazilianAddresses.Api.Controllers
         {
             List<AddressResponseJson> addressResponseJsons = await getIBGEAddresses.Execute(paginationBaseRequestJson);
 
-            return Ok(new { sucess = true, message = APIMSG.LISTING_COMPLETED, addressResponseJsons });
+            return Ok(new { sucess = true, message = APIMSG.LISTING_COMPLETED, addresses = addressResponseJsons });
         }
 
         [HttpDelete]
@@ -50,7 +50,7 @@ namespace BrazilianAddresses.Api.Controllers
         {
             List<AddressResponseJson> addressResponseJsons = await getIBGEAddresses.Execute(addressesByStateRequestJson);
 
-            return Ok(new { sucess = true, message = APIMSG.LISTING_COMPLETED, addressResponseJsons });
+            return Ok(new { sucess = true, message = APIMSG.LISTING_COMPLETED, addresses = addressResponseJsons });
         }
 
         [HttpGet("GetIBGEAddressByCity")]
@@ -59,7 +59,16 @@ namespace BrazilianAddresses.Api.Controllers
         {
             List<AddressResponseJson> cityAddress = await getIBGEAddress.Execute(cityAddressRequestJson);
 
-            return Ok(new { sucess = true, message = APIMSG.LISTING_COMPLETED, cityAddress });
+            return Ok(new { sucess = true, message = APIMSG.LISTING_COMPLETED, addresses = cityAddress });
+        }
+
+        [HttpGet("GetIBGEAddressByIBGECode")]
+        [ProducesResponseType(typeof(AddressResponseJson), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetAddressByCode([FromServices] IGetIBGEAddresses getIBGEAddresses, [FromQuery] AddressCodeRequestJson addressCodeRequestJson)
+        {
+            AddressResponseJson addressResponseJson = await getIBGEAddresses.Execute(addressCodeRequestJson);
+
+            return Ok(new { sucess = true, message = APIMSG.LISTING_COMPLETED, address = addressResponseJson });
         }
     }
 }
