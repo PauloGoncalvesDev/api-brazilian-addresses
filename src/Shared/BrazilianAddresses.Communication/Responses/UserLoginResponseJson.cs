@@ -2,8 +2,6 @@
 {
     public class UserLoginResponseJson : BaseResponseJson
     {
-        public string Name { get; set; }
-
         public string Token { get; set; }
     }
 }

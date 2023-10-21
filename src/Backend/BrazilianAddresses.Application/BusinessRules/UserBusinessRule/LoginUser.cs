@@ -1,5 +1,6 @@
 ﻿using BrazilianAddresses.Application.BusinessRules.UserBusinessRule.Interfaces;
 using BrazilianAddresses.Application.Services.Cryptography;
+using BrazilianAddresses.Application.Services.Token;
 using BrazilianAddresses.Communication.Requests;
 using BrazilianAddresses.Communication.Responses;
 using BrazilianAddresses.Domain.Entities;
@@ -15,10 +16,13 @@ namespace BrazilianAddresses.Application.BusinessRules.UserBusinessRule
 
         private readonly PasswordEncryption _passwordEncryption;
 
-        public LoginUser(IUserReadOnlyRepository userReadOnlyRepository, PasswordEncryption passwordEncryption)
+        private readonly TokenController _tokenController;
+
+        public LoginUser(IUserReadOnlyRepository userReadOnlyRepository, PasswordEncryption passwordEncryption, TokenController tokenController)
         {
             _userReadOnlyRepository = userReadOnlyRepository;
             _passwordEncryption = passwordEncryption;
+            _tokenController = tokenController;
         }
 
         public async Task<UserLoginResponseJson> Execute(UserLoginRequestJson userLoginRequest)
@@ -35,7 +39,9 @@ namespace BrazilianAddresses.Application.BusinessRules.UserBusinessRule
 
             return new UserLoginResponseJson
             {
-
+                Message = APIMSG.LOGIN_COMPLETED,
+                Success = true,
+                Token = _tokenController.GenerateTokenJwt(loginUser.Email)
             };
         }
     }
