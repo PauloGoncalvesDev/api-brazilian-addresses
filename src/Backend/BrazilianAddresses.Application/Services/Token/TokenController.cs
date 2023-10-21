@@ -80,6 +80,5 @@ namespace BrazilianAddresses.Application.Services.Token
        
             return claimList;
         }
-
     }
 }
