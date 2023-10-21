@@ -45,13 +45,17 @@ namespace BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule
             return _mapper.Map<List<AddressResponseJson>>(ibgesPaged);
         }
 
-        public async Task<AddressResponseJson> Execute(CityAddressRequestJson addressByCity)
+        public async Task<List<AddressResponseJson>> Execute(CityAddressRequestJson addressByCity)
         {
+            ValidateZeroIndex(addressByCity.PageIndex);
+
             string city = _mapper.Map<CityAddressRequestJson>(addressByCity).City;
 
-            IBGE cityAddress = await _ibgeReadOnlyRepository.GetIBGEAddressByCity(city) ?? throw new ValidationException(APIMSG.NO_EXISTING_CITY);
+            List<IBGE> cityAddresses = await _ibgeReadOnlyRepository.GetIBGEAddressByCity(city) ?? throw new ValidationException(APIMSG.NO_EXISTING_CITY);
 
-            return _mapper.Map<AddressResponseJson>(cityAddress);
+            List<IBGE> citysPaged = PaginatedList(cityAddresses, addressByCity.PageIndex - 1, addressByCity.PageSize);
+
+            return _mapper.Map<List<AddressResponseJson>>(citysPaged);
         }
 
         private static List<IBGE> PaginatedList(List<IBGE> ibges, int pageIndex, int pageSize)
