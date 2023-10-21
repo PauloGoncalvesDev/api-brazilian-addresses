@@ -17,6 +17,8 @@ namespace BrazilianAddresses.Application
 
             AddApplicationUser(serviceDescriptors);
 
+            AddApplicationLogin(serviceDescriptors);
+
             AddApplicationServicePasswordEncryption(serviceDescriptors);
 
             AddApplicationServiceTokenJwt(serviceDescriptors, configuration);
@@ -33,6 +35,11 @@ namespace BrazilianAddresses.Application
         private static void AddApplicationUser(IServiceCollection serviceDescriptors)
         {
             serviceDescriptors.AddScoped<ICreateUser, CreateUser>();
+        }
+
+        private static void AddApplicationLogin(IServiceCollection serviceDescriptors)
+        {
+            serviceDescriptors.AddScoped<ILoginUser, LoginUser>();
         }
 
         private static void AddApplicationServicePasswordEncryption(IServiceCollection serviceDescriptors)
