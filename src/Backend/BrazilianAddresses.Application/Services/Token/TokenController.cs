@@ -1,4 +1,5 @@
-﻿using Microsoft.IdentityModel.Tokens;
+﻿using BrazilianAddresses.Domain.Enum;
+using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 
@@ -7,6 +8,8 @@ namespace BrazilianAddresses.Application.Services.Token
     public class TokenController
     {
         private readonly string _emailAlias = "eml";
+
+        private readonly string _roleAlias = "roles";
 
         private readonly double _expirationTime;
 
@@ -18,12 +21,9 @@ namespace BrazilianAddresses.Application.Services.Token
             _securityPassword = securityPassword;
         }
 
-        public string GenerateTokenJwt(string userEmail)
+        public string GenerateTokenJwt(string userEmail, UserRoleEnum userRoleEnum)
         {
-            List<Claim> claimList = new List<Claim>
-            {
-                new Claim(_emailAlias, userEmail)
-            };
+            List<Claim> claimList = AddClaimIntoListClaim(userEmail, userRoleEnum);
 
             SecurityTokenDescriptor tokenDescriptor = new SecurityTokenDescriptor
             {
@@ -70,5 +70,16 @@ namespace BrazilianAddresses.Application.Services.Token
 
             return new SymmetricSecurityKey(symmetricKey);
         }
+
+        private List<Claim> AddClaimIntoListClaim(string userEmail, UserRoleEnum userRoleEnum)
+        {
+            List<Claim> claimList = new List<Claim>();
+
+            claimList.Add(new Claim(_emailAlias, userEmail));
+            claimList.Add(new Claim(_roleAlias, Enum.GetName(userRoleEnum)));
+       
+            return claimList;
+        }
+
     }
 }

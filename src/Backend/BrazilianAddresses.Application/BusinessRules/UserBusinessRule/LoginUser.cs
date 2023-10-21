@@ -35,7 +35,7 @@ namespace BrazilianAddresses.Application.BusinessRules.UserBusinessRule
             {
                 Message = APIMSG.LOGIN_COMPLETED,
                 Success = true,
-                Token = _tokenController.GenerateTokenJwt(user.Email)
+                Token = _tokenController.GenerateTokenJwt(user.Email, user.Role)
             };
         }
 
