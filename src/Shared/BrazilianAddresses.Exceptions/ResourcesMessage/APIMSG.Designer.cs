@@ -79,6 +79,15 @@ namespace BrazilianAddresses.Exceptions.ResourcesMessage {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &apos;Email&apos; is a required field..
+        /// </summary>
+        public static string EMPTY_EMAIL {
+            get {
+                return ResourceManager.GetString("EMPTY_EMAIL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &apos;IBGECode&apos; is a required field..
         /// </summary>
         public static string EMPTY_IBGECODE {
@@ -106,11 +115,29 @@ namespace BrazilianAddresses.Exceptions.ResourcesMessage {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &apos;Password&apos; is a required field..
+        /// </summary>
+        public static string EMPTY_PASSWORD {
+            get {
+                return ResourceManager.GetString("EMPTY_PASSWORD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &apos;State&apos; is a required field..
         /// </summary>
         public static string EMPTY_STATE {
             get {
                 return ResourceManager.GetString("EMPTY_STATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;UserRole&apos; is a required field..
+        /// </summary>
+        public static string EMPTY_USERROLE {
+            get {
+                return ResourceManager.GetString("EMPTY_USERROLE", resourceCulture);
             }
         }
         
@@ -129,6 +156,15 @@ namespace BrazilianAddresses.Exceptions.ResourcesMessage {
         public static string EXISTING_CODE {
             get {
                 return ResourceManager.GetString("EXISTING_CODE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Already exists a User with this e-mail {0}..
+        /// </summary>
+        public static string EXISTING_EMAIL {
+            get {
+                return ResourceManager.GetString("EXISTING_EMAIL", resourceCulture);
             }
         }
         
@@ -178,6 +214,15 @@ namespace BrazilianAddresses.Exceptions.ResourcesMessage {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Email informed is invalid..
+        /// </summary>
+        public static string INVALID_EMAIL {
+            get {
+                return ResourceManager.GetString("INVALID_EMAIL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to PageIndex entered value is not valid..
         /// </summary>
         public static string INVALID_PAGEINDEX {
@@ -205,6 +250,24 @@ namespace BrazilianAddresses.Exceptions.ResourcesMessage {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to UserRole informed is not valid..
+        /// </summary>
+        public static string INVALID_USERROLE {
+            get {
+                return ResourceManager.GetString("INVALID_USERROLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password must have at least size {0}..
+        /// </summary>
+        public static string LENGTH_PASSWORD {
+            get {
+                return ResourceManager.GetString("LENGTH_PASSWORD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The city code entered is not registered..
         /// </summary>
         public static string NO_EXISTING_CODE {
@@ -228,6 +291,15 @@ namespace BrazilianAddresses.Exceptions.ResourcesMessage {
         public static string UPDATED_IBGE {
             get {
                 return ResourceManager.GetString("UPDATED_IBGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User created successfully..
+        /// </summary>
+        public static string USER_CREATED {
+            get {
+                return ResourceManager.GetString("USER_CREATED", resourceCulture);
             }
         }
     }
