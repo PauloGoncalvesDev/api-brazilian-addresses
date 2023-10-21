@@ -186,6 +186,12 @@
   <data name="LENGTH_PASSWORD" xml:space="preserve">
     <value>A senha deve ter pelo menos tamanho {0}</value>
   </data>
+  <data name="LOGIN_COMPLETED" xml:space="preserve">
+    <value>Login efetuado com sucesso.</value>
+  </data>
+  <data name="LOGIN_ERROR" xml:space="preserve">
+    <value>Email ou senha estão incorretos.</value>
+  </data>
   <data name="NO_EXISTING_CODE" xml:space="preserve">
     <value>O código de município informado não está registrado.</value>
   </data>
