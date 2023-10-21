@@ -45,7 +45,7 @@ namespace BrazilianAddresses.Infrastructure.RepositoryAccess.Repository
 
         public async Task<List<IBGE>> GetIBGEAddressesByState(string state)
         {
-            return await _context.IBGE.AsNoTracking().Where(x => x.State.ToLower() == state && x.DeletionDate == null).ToListAsync();
+            return await _context.IBGE.AsNoTracking().Where(x => x.State == state && x.DeletionDate == null).ToListAsync();
         }
     }
 }
