@@ -34,6 +34,9 @@ namespace BrazilianAddresses.Application.Services.Automapper
                 .ForMember(f => f.IBGECode, opt => opt.MapFrom(m => m.IBGECode))
                 .ForMember(f => f.State, opt => opt.MapFrom(m => m.State))
                 .ForMember(f => f.City, opt => opt.MapFrom(m => m.City));
+
+            CreateMap<CityAddressRequestJson, CityAddressRequestJson>()
+                .ForMember(f => f.City, opt => opt.MapFrom(m => m.City.ToLower().Trim()));
         }
 
         private void MapperRemoveAddress()
