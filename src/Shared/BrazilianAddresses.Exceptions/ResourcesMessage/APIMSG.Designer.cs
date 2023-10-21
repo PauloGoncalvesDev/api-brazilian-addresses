@@ -142,15 +142,6 @@ namespace BrazilianAddresses.Exceptions.ResourcesMessage {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Method executed successfully..
-        /// </summary>
-        public static string EXECUTION_SUCCESS_MSG {
-            get {
-                return ResourceManager.GetString("EXECUTION_SUCCESS_MSG", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to The city code entered is already registered..
         /// </summary>
         public static string EXISTING_CODE {
@@ -264,6 +255,15 @@ namespace BrazilianAddresses.Exceptions.ResourcesMessage {
         public static string LENGTH_PASSWORD {
             get {
                 return ResourceManager.GetString("LENGTH_PASSWORD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Listing completed successfully..
+        /// </summary>
+        public static string LISTING_COMPLETED {
+            get {
+                return ResourceManager.GetString("LISTING_COMPLETED", resourceCulture);
             }
         }
         

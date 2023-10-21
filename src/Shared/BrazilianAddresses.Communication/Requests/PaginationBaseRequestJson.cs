@@ -6,7 +6,7 @@ namespace BrazilianAddresses.Communication.Requests
     public class PaginationBaseRequestJson
     {
         [Required(ErrorMessageResourceName = "EMPTY_PAGEINDEX", ErrorMessageResourceType = typeof(APIMSG))]
-        [Range(-1, int.MaxValue, ErrorMessageResourceName = "INVALID_PAGEINDEX", ErrorMessageResourceType = typeof(APIMSG))]
+        [Range(0, int.MaxValue, ErrorMessageResourceName = "INVALID_PAGEINDEX", ErrorMessageResourceType = typeof(APIMSG))]
         public int PageIndex { get; set; }
 
         [Required(ErrorMessageResourceName = "EMPTY_PAGESIZE", ErrorMessageResourceType = typeof(APIMSG))]

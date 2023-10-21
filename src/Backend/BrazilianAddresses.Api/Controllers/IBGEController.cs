@@ -27,11 +27,12 @@ namespace BrazilianAddresses.Api.Controllers
         }
 
         [HttpGet("GetAllIBGEAddresses")]
-        public async Task<IActionResult> ListAllIBGEAddresses([FromServices] IListAllIBGEAddresses listAllIBGEAddresses, [FromQuery] PaginationBaseRequestJson paginationBaseRequestJson)
+        [ProducesResponseType(typeof(AddressResponseJson), StatusCodes.Status200OK)]
+        public async Task<IActionResult> ListAllIBGEAddresses([FromServices] IGetIBGEAddresses getIBGEAddresses, [FromQuery] PaginationBaseRequestJson paginationBaseRequestJson)
         {
-            List<AddressResponseJson> addressResponseJsons = await listAllIBGEAddresses.Execute(paginationBaseRequestJson);
+            List<AddressResponseJson> addressResponseJsons = await getIBGEAddresses.Execute(paginationBaseRequestJson);
 
-            return Ok(new { sucess = true, message = APIMSG.EXECUTION_SUCCESS_MSG, addressResponseJsons });
+            return Ok(new { sucess = true, message = APIMSG.LISTING_COMPLETED, addressResponseJsons });
         }
 
         [HttpDelete]
@@ -41,6 +42,15 @@ namespace BrazilianAddresses.Api.Controllers
             IBGEResponseJson ibgeResponseJson = await removeIBGE.Execute(ibgeRemoveRequestJson.IBGECode);
 
             return Ok(ibgeResponseJson);
+        }
+
+        [HttpGet("GetIBGEAddressesByState")]
+        [ProducesResponseType(typeof(AddressResponseJson), StatusCodes.Status200OK)]
+        public async Task<IActionResult> ListIBGEAddressesByState([FromServices] IGetIBGEAddresses getIBGEAddresses, [FromQuery] AddressesByStateRequestJson addressesByStateRequestJson)
+        {
+            List<AddressResponseJson> addressResponseJsons = await getIBGEAddresses.Execute(addressesByStateRequestJson);
+
+            return Ok(new { sucess = true, message = APIMSG.LISTING_COMPLETED, addressResponseJsons });
         }
     }
 }

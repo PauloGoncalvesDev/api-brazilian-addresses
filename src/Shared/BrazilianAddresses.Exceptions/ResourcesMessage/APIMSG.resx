@@ -144,9 +144,6 @@
   <data name="EMPTY_USERROLE" xml:space="preserve">
     <value>'UserRole' is a required field.</value>
   </data>
-  <data name="EXECUTION_SUCCESS_MSG" xml:space="preserve">
-    <value>Method executed successfully.</value>
-  </data>
   <data name="EXISTING_CODE" xml:space="preserve">
     <value>The city code entered is already registered.</value>
   </data>
@@ -185,6 +182,9 @@
   </data>
   <data name="LENGTH_PASSWORD" xml:space="preserve">
     <value>Password must have at least size {0}.</value>
+  </data>
+  <data name="LISTING_COMPLETED" xml:space="preserve">
+    <value>Listing completed successfully.</value>
   </data>
   <data name="LOGIN_COMPLETED" xml:space="preserve">
     <value>Login successfully completed.</value>
