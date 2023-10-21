@@ -22,5 +22,17 @@ namespace BrazilianAddresses.Infrastructure.RepositoryAccess.Repository
         {
             return await _context.User.AnyAsync(user => user.Email.Equals(email) && user.DeletionDate == null);
         }
+
+        public async Task<User> GetUserByEmail(string email)
+        {
+            return await _context.User.AsNoTracking()
+                .FirstOrDefaultAsync(u => u.Email.Equals(email));
+        }
+
+        public async Task<User> GetUserLogin(string email, string password)
+        {
+            return await _context.User.AsNoTracking()
+                .FirstOrDefaultAsync(u => u.Email.Equals(email) && u.Password.Equals(password));
+        }
     }
 }
