@@ -9,5 +9,7 @@ namespace BrazilianAddresses.Domain.Repositories.IBGERepository
         Task<List<IBGE>> GetAllIBGEAddresses();
 
         Task<List<IBGE>> GetIBGEAddressesByState(string state);
+
+        Task<IBGE> GetIBGEAddressByCity(string city);
     }
 }
