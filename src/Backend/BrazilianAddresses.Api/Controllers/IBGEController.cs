@@ -52,5 +52,14 @@ namespace BrazilianAddresses.Api.Controllers
 
             return Ok(new { sucess = true, message = APIMSG.LISTING_COMPLETED, addressResponseJsons });
         }
+
+        [HttpGet("GetIBGEAddressByIBGECode")]
+        [ProducesResponseType(typeof(AddressResponseJson), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetAddressByCode([FromServices] IGetIBGEAddresses getIBGEAddresses, [FromQuery] AddressCodeRequestJson addressCodeRequestJson)
+        {
+            AddressResponseJson addressResponseJson = await getIBGEAddresses.Execute(addressCodeRequestJson);
+
+            return Ok(new { sucess = true, message = APIMSG.LISTING_COMPLETED, addressResponseJson });
+        }
     }
 }

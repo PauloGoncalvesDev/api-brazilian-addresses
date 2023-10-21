@@ -45,6 +45,13 @@ namespace BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule
             return _mapper.Map<List<AddressResponseJson>>(ibgesPaged);
         }
 
+        public async Task<AddressResponseJson> Execute(AddressCodeRequestJson addressByCode)
+        {
+            IBGE address = await _ibgeReadOnlyRepository.GetIBGEByIBGECode(addressByCode.IBGECode) ?? throw new ValidationException(APIMSG.NO_EXISTING_CODE);
+
+            return _mapper.Map<AddressResponseJson>(address);
+        }
+
         private static List<IBGE> PaginatedList(List<IBGE> ibges, int pageIndex, int pageSize)
         {
             ValidateIndexValue(ibges.Count, pageIndex, pageSize);
