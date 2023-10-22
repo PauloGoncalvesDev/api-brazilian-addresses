@@ -3,7 +3,7 @@
 A **Brazilian Addresses API** é uma Web API construída em C# utilizando o framework .NET 7, focada na gestão de endereços brasileiros. Ela permite o armazenamento de informações essenciais sobre cidades, incluindo nome, código IBGE e estado. Além disso, a API oferece funcionalidades como autenticação, criação de usuários e endpoints para manipulação completa de endereços.
 
 - Link para API: https://brazillianaddressapi.azurewebsites.net/
-- Link para documentação:
+- Link para documentação: https://github.com/PauloGoncalvesDev/api-brazilian-addresses/blob/develop/Brazilian-Addresses-Doc.yaml
 
 ## Índice
 
@@ -56,7 +56,7 @@ Agradecemos ao [Balta.io](https://www.youtube.com/c/baltaio) pela oportunidade d
 - **Remoção de Endereço:** Exclusão de endereços do banco de dados.
 
 ## Como Usar
-Realize o download do arquivo Api-Brazilian-Addressespostman_collection.json e abra-o utilizando Postman. Após isso selecione a chave apontada para produção e realize as requisições.
+Realize o download do arquivo Api-Brazilian-Addressespostman_collection.json (https://github.com/PauloGoncalvesDev/api-brazilian-addresses/blob/develop/Api-Brazilian-Addresses.postman_collection.json) e abra-o utilizando Postman. Após isso selecione a chave apontada para produção e realize as requisições.
 
 - Primeiro crie um usuário com o EndPoint **User**, o acesso a criação, edição e atualização de endereços é permitido somente para usuários com Role 0 (Admin).
 - Após criar o usuário realize o login com o EndPoint **Login**, a response gerada terá um token de autenticação. Insira este token na Authorization do Postman como **Bearer Token**. Com isso você terá permissão para execução dos outros EndPoints.
