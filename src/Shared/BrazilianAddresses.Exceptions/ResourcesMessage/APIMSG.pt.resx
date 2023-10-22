@@ -151,7 +151,7 @@
     <value>Já existe um usuário com este e-mail {0}.</value>
   </data>
   <data name="IBGE_CREATED" xml:space="preserve">
-    <value>Localidade informada foi registrado com sucesso.</value>
+    <value>Localidade informada foi registrada com sucesso.</value>
   </data>
   <data name="IBGE_REMOVED" xml:space="preserve">
     <value>Localidade informada foi removida com sucesso.</value>
@@ -181,10 +181,10 @@
     <value>O campo UserRole está inválido.</value>
   </data>
   <data name="LENGTH_PASSWORD" xml:space="preserve">
-    <value>A senha deve ter pelo menos tamanho {0}</value>
+    <value>A senha deve ter pelo menos tamanho {0}.</value>
   </data>
   <data name="LISTING_COMPLETED" xml:space="preserve">
-    <value>Listagem concluída com sucesso.</value>
+    <value>Listagem de endereços concluída com sucesso.</value>
   </data>
   <data name="NO_EXISTING_CITY" xml:space="preserve">
     <value>A cidade informada não está registrada.</value>
