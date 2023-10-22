@@ -1,7 +1,13 @@
 ﻿using BrazilianAddresses.Application.Services.Token;
+using BrazilianAddresses.Communication.Responses;
+using BrazilianAddresses.Domain.Entities;
 using BrazilianAddresses.Domain.Repositories.UserRepository;
+using BrazilianAddresses.Exceptions.ExceptionsBase;
+using BrazilianAddresses.Exceptions.ResourcesMessage;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.IdentityModel.Tokens;
 
 namespace BrazilianAddresses.Api.Filters
 {
@@ -17,9 +23,47 @@ namespace BrazilianAddresses.Api.Filters
             _userReadOnlyRepository = userReadOnlyRepository;
         }
 
-        public Task OnAuthorizationAsync(AuthorizationFilterContext context)
+        public async Task OnAuthorizationAsync(AuthorizationFilterContext context)
         {
-            throw new NotImplementedException();
+            try
+            {
+                string token = GetTokenFromRequest(context);
+
+                string email = _tokenController.GetEmailFromTokenJwt(token);
+
+                User user = await _userReadOnlyRepository.GetUserByEmail(email);
+
+                if (user == null)
+                    ReturnsExceptionUserWithoutAuthorization(context);
+            }
+            catch (SecurityTokenExpiredException)
+            {
+                ReturnsExceptionTokenExpired(context);
+            }
+            catch
+            {
+                ReturnsExceptionUserWithoutAuthorization(context);
+            }
+        }
+
+        private static string GetTokenFromRequest(AuthorizationFilterContext context)
+        {
+            string token = context.HttpContext.Request.Headers["Authorization"].ToString();
+
+            if (string.IsNullOrEmpty(token))
+                ReturnsExceptionUserWithoutAuthorization(context);
+
+            return token["Bearer".Length..].Trim();
+        }
+
+        private static void ReturnsExceptionUserWithoutAuthorization(AuthorizationFilterContext context)
+        {
+            context.Result = new UnauthorizedObjectResult(new ErrorBaseResponseJson(APIMSG.USER_UNAUTHORIZED, false));
+        }
+
+        private static void ReturnsExceptionTokenExpired(AuthorizationFilterContext context)
+        {
+            context.Result = new UnauthorizedObjectResult(new ErrorBaseResponseJson(APIMSG.TOKEN_EXPIRED, false));
         }
     }
 }
