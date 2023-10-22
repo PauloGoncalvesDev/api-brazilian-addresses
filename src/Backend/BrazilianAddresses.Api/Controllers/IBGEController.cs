@@ -11,7 +11,6 @@ namespace BrazilianAddresses.Api.Controllers
     {
         [HttpPost]
         [ProducesResponseType(typeof(IBGEResponseJson), StatusCodes.Status201Created)]
-        [ServiceFilter(typeof(UserAuthorizationAttribute))]
         [ServiceFilter(typeof(AdminAuthorizationAttribute))]
         public async Task<IActionResult> CreateIBGE([FromServices] ICreateIBGE createIBGE, [FromBody] IBGERequestJson ibgeRequestJson)
         {
@@ -22,7 +21,6 @@ namespace BrazilianAddresses.Api.Controllers
 
         [HttpPut]
         [ProducesResponseType(typeof(IBGEResponseJson), StatusCodes.Status200OK)]
-        [ServiceFilter(typeof(UserAuthorizationAttribute))]
         [ServiceFilter(typeof(AdminAuthorizationAttribute))]
         public async Task<IActionResult> UpdateIBGE([FromServices] IUpdateIBGE updateIBGE, [FromBody] IBGEUpdateRequestJson ibgeUpdateRequestJson)
         {
@@ -43,7 +41,6 @@ namespace BrazilianAddresses.Api.Controllers
 
         [HttpDelete]
         [ProducesResponseType(typeof(IBGEResponseJson), StatusCodes.Status200OK)]
-        [ServiceFilter(typeof(UserAuthorizationAttribute))]
         [ServiceFilter(typeof(AdminAuthorizationAttribute))]
         public async Task<IActionResult> RemoveIBGE([FromServices] IRemoveIBGE removeIBGE, [FromQuery] IBGERemoveRequestJson ibgeRemoveRequestJson)
         {
