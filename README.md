@@ -62,8 +62,11 @@ Realize o download do arquivo Api-Brazilian-Addressespostman_collection.json e a
 - Após criar o usuário realize o login com o EndPoint **Login**, a response gerada terá um token de autenticação. Insira este token na Authorization do Postman como **Bearer Token**. Com isso você terá permissão para execução dos outros EndPoints.
 
 ## Exemplos
+![image](https://github.com/PauloGoncalvesDev/api-brazilian-addresses/assets/140662593/d8580fc9-a025-4171-9130-88915d45840b)
 
+![image](https://github.com/PauloGoncalvesDev/api-brazilian-addresses/assets/140662593/3959d428-b678-4a5d-a8cb-6cadab5c90d7)
 
+![image](https://github.com/PauloGoncalvesDev/api-brazilian-addresses/assets/140662593/49116bef-757f-4d06-8c54-144b8c34aa16)
 
 ## Desenvolvedores
 - Paulo Guilherme: https://github.com/PauloGoncalvesDev
