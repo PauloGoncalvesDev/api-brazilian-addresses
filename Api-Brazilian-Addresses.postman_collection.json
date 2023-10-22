@@ -1,0 +1,355 @@
+{
+	"info": {
+		"_postman_id": "b471b2a2-8426-4182-9c52-aeedff216884",
+		"name": "Api-Brazilian-Addresses",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "30096634"
+	},
+	"item": [
+		{
+			"name": "IBGE",
+			"item": [
+				{
+					"name": "CreateIBGE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ibgeCode\": \"2363955\",\r\n    \"state\": \"CE\",\r\n    \"city\": \"Maracanaú\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{localURL}}/IBGE/CreateIBGE"
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllIBGEAddresses",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localURL}}/IBGE/GetAllIBGEAddresses?PageIndex=35&PageSize=10",
+							"host": [
+								"{{localURL}}"
+							],
+							"path": [
+								"IBGE",
+								"GetAllIBGEAddresses"
+							],
+							"query": [
+								{
+									"key": "PageIndex",
+									"value": "35"
+								},
+								{
+									"key": "PageSize",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetIBGEAddressesByState",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localURL}}/IBGE/GetIBGEAddressesByState?State=CE&PageIndex=1&PageSize=50",
+							"host": [
+								"{{localURL}}"
+							],
+							"path": [
+								"IBGE",
+								"GetIBGEAddressesByState"
+							],
+							"query": [
+								{
+									"key": "State",
+									"value": "CE",
+									"description": "Unidade Federativa (UF) de 1 dos 27 estados possíveis"
+								},
+								{
+									"key": "PageIndex",
+									"value": "1",
+									"description": "Valor a partir de 1"
+								},
+								{
+									"key": "PageSize",
+									"value": "50",
+									"description": "Valor entre 10 e 50"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetIBGEAddressByCity",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localURL}}/IBGE/GetIBGEAddressByCity?City=Maracanau&PageIndex=1&PageSize=10",
+							"host": [
+								"{{localURL}}"
+							],
+							"path": [
+								"IBGE",
+								"GetIBGEAddressByCity"
+							],
+							"query": [
+								{
+									"key": "City",
+									"value": "Maracanau",
+									"description": "Nome de uma cidade brasileira"
+								},
+								{
+									"key": "PageIndex",
+									"value": "1",
+									"description": "Valor a partir de 1"
+								},
+								{
+									"key": "PageSize",
+									"value": "10",
+									"description": "Valor entre 10 e 50"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetIBGEAddressByIBGECode",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localURL}}/IBGE/GetIBGEAddressByIBGECode?IBGECode=2363955",
+							"host": [
+								"{{localURL}}"
+							],
+							"path": [
+								"IBGE",
+								"GetIBGEAddressByIBGECode"
+							],
+							"query": [
+								{
+									"key": "IBGECode",
+									"value": "2363955",
+									"description": "Código IBGE"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateIBGE",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ibgeCode\": \"2363955\",\r\n    \"state\": \"CE\",\r\n    \"city\": \"Maracanau\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{localURL}}/IBGE/UpdateIBGE"
+					},
+					"response": []
+				},
+				{
+					"name": "RemoveIBGE",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{localURL}}/IBGE/RemoveIBGE?IBGECode=1234567",
+							"host": [
+								"{{localURL}}"
+							],
+							"path": [
+								"IBGE",
+								"RemoveIBGE"
+							],
+							"query": [
+								{
+									"key": "IBGECode",
+									"value": "1234567",
+									"description": "Código IBGE"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "CreateUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"eliaquim12@gmail.com\",\r\n    \"password\": \"brazilianAddressAPI\",\r\n    \"userRole\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{localURL}}/User"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"eliaquimjorras@gmail.com\",\r\n    \"password\": \"brazilianAddressAPI\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{localURL}}/Login"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": {
+			"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWwiOiJlbGlhcXVpbWpvcnJhc0BnbWFpbC5jb20iLCJ1c2Vycm9sZSI6IkFkbWluIiwibmJmIjoxNjk4MDA5NjQwLCJleHAiOjE2OTgwMTY4NDAsImlhdCI6MTY5ODAwOTY0MH0.hWcc-nBjaJD9m9ko9JQmjDKPo7SjSimjAwRe2MFmJz4"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "localURL",
+			"value": "https://localhost:7290",
+			"type": "string"
+		},
+		{
+			"key": "prodURL",
+			"value": "https://brazillianaddressapi.azurewebsites.net",
+			"type": "string"
+		}
+	]
+}
