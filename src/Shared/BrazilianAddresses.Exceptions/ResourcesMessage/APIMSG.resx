@@ -186,6 +186,9 @@
   <data name="LISTING_COMPLETED" xml:space="preserve">
     <value>Listing completed successfully.</value>
   </data>
+  <data name="NO_EXISTING_CITY" xml:space="preserve">
+    <value>The city entered is not registered.</value>
+  </data>
   <data name="LOGIN_COMPLETED" xml:space="preserve">
     <value>Login successfully completed.</value>
   </data>

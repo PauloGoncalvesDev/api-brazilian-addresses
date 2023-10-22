@@ -268,6 +268,15 @@ namespace BrazilianAddresses.Exceptions.ResourcesMessage {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The city entered is not registered..
+        /// </summary>
+        public static string NO_EXISTING_CITY {
+            get {
+                return ResourceManager.GetString("NO_EXISTING_CITY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Login successfully completed..
         /// </summary>
         public static string LOGIN_COMPLETED {

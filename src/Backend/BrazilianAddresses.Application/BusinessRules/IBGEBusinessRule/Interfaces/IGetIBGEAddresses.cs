@@ -8,5 +8,9 @@ namespace BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule.Interfac
         public Task<List<AddressResponseJson>> Execute(PaginationBaseRequestJson pagination);
 
         public Task<List<AddressResponseJson>> Execute(AddressesByStateRequestJson addressesByState);
+
+        public Task<List<AddressResponseJson>> Execute(CityAddressRequestJson cityAddressRequestJson);
+
+        public Task<AddressResponseJson> Execute(AddressCodeRequestJson addressByCode);
     }
 }
