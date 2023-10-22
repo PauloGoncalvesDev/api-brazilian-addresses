@@ -277,7 +277,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"eliaquim12@gmail.com\",\r\n    \"password\": \"brazilianAddressAPI\",\r\n    \"userRole\": \"1\"\r\n}",
+							"raw": "{\r\n    \"email\": \"teste123@gmail.com\",\r\n    \"password\": \"brazilianAddressAPI\",\r\n    \"userRole\": \"1\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -300,7 +300,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"eliaquimjorras@gmail.com\",\r\n    \"password\": \"brazilianAddressAPI\"\r\n}",
+							"raw": "{\r\n    \"email\": \"teste123@gmail.com\",\r\n    \"password\": \"brazilianAddressAPI\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
