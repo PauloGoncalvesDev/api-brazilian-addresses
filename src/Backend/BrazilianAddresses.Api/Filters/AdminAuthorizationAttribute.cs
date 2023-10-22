@@ -43,13 +43,12 @@ namespace BrazilianAddresses.Api.Filters
                 if (Enum.GetName(user.Role) != role || Enum.GetName(user.Role) != _rolesAdmin)
                     throw new AuthorizationException();
             }
-            catch (SecurityTokenExpiredException)
+            catch (Exception ex)
             {
-                ReturnsExceptionTokenExpired(context);
-            }
-            catch
-            {
-                ReturnsExceptionUserWithoutAdminAuthorization(context);
+                if (ex is SecurityTokenExpiredException)
+                    ReturnsExceptionTokenExpired(context);
+                else
+                    ReturnsExceptionUserWithoutAdminAuthorization(context);
             }
         }
 

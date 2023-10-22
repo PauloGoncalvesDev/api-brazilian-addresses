@@ -33,16 +33,15 @@ namespace BrazilianAddresses.Api.Filters
 
                 User user = await _userReadOnlyRepository.GetUserByEmail(email);
 
-                if(user == null)
+                if (user == null)
                     throw new AuthorizationException();
             }
-            catch (SecurityTokenExpiredException)
+            catch (Exception ex)
             {
-                ReturnsExceptionTokenExpired(context);
-            }
-            catch
-            {
-                ReturnsExceptionUserWithoutAuthorization(context);
+                if (ex is SecurityTokenExpiredException)
+                    ReturnsExceptionTokenExpired(context);
+                else
+                    ReturnsExceptionUserWithoutAuthorization(context);
             }
         }
 
