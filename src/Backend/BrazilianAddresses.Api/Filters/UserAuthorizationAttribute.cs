@@ -33,8 +33,8 @@ namespace BrazilianAddresses.Api.Filters
 
                 User user = await _userReadOnlyRepository.GetUserByEmail(email);
 
-                if (user == null)
-                    ReturnsExceptionUserWithoutAuthorization(context);
+                if(user == null)
+                    throw new AuthorizationException();
             }
             catch (SecurityTokenExpiredException)
             {
@@ -51,7 +51,7 @@ namespace BrazilianAddresses.Api.Filters
             string token = context.HttpContext.Request.Headers["Authorization"].ToString();
 
             if (string.IsNullOrEmpty(token))
-                ReturnsExceptionUserWithoutAuthorization(context);
+                throw new AuthorizationException();
 
             return token["Bearer".Length..].Trim();
         }
