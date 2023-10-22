@@ -6,6 +6,7 @@ using BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule.Interfaces;
 using BrazilianAddresses.Application.BusinessRules.UserBusinessRule.Interfaces;
 using Microsoft.Extensions.Configuration;
 using BrazilianAddresses.Application.Services.Token;
+using BrazilianAddresses.Application.Services.LoggedUser;
 
 namespace BrazilianAddresses.Application
 {
@@ -22,6 +23,8 @@ namespace BrazilianAddresses.Application
             AddApplicationServicePasswordEncryption(serviceDescriptors);
 
             AddApplicationServiceTokenJwt(serviceDescriptors, configuration);
+
+            AddApplicationLoggedUser(serviceDescriptors);
         }
 
         private static void AddApplicationIBGE(IServiceCollection serviceDescriptors)
@@ -54,6 +57,11 @@ namespace BrazilianAddresses.Application
             string securityPassword = configuration.GetRequiredSection("Configuration:Jwt:JwtSecurityPassword").Value;
 
             serviceDescriptors.AddScoped(options => new TokenController(expirationTime, securityPassword));
+        }
+
+        private static void AddApplicationLoggedUser(IServiceCollection serviceDescriptors)
+        {
+            serviceDescriptors.AddScoped<ILoggedUser, LoggedUser>();
         }
     }
 }
