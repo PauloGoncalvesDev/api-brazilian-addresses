@@ -9,6 +9,7 @@ using BrazilianAddresses.Application.Services.Automapper;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddControllers().AddJsonOptions(options =>
 {
     options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
@@ -43,6 +44,14 @@ builder.Services.AddSwaggerGen(option =>
     });
 });
 
+builder.Services.AddCors(opt =>
+{
+    opt.AddPolicy(name: "SwaggerPolicy", policy =>
+    {
+        policy.WithOrigins("https://editor.swagger.io/").AllowAnyHeader().AllowAnyMethod();
+    });
+});
+
 builder.Services.AddRepository(builder.Configuration);
 builder.Services.AddApplication(builder.Configuration);
 builder.Services.AddMvc(options => options.Filters.Add(typeof(ExceptionFilters)));
@@ -69,6 +78,8 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseCors("SwaggerPolicy");
 
 UpdateDatabase();
 

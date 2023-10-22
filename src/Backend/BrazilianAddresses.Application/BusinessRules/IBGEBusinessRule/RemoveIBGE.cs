@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule.Interfaces;
+using BrazilianAddresses.Application.Services.LoggedUser;
 using BrazilianAddresses.Communication.Responses;
 using BrazilianAddresses.Domain.Entities;
 using BrazilianAddresses.Domain.Repositories;
@@ -17,20 +18,25 @@ namespace BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule
 
         private readonly IWorkUnit _workUnit;
 
-        public RemoveIBGE(IIBGEUpdateOnlyRepository ibgeUpdateOnlyRepository, IMapper mapper, IWorkUnit workUnit)
+        private readonly ILoggedUser _loggedUser;
+
+        public RemoveIBGE(IIBGEUpdateOnlyRepository ibgeUpdateOnlyRepository, IMapper mapper, IWorkUnit workUnit, ILoggedUser loggedUser)
         {
             _ibgeUpdateOnlyRepository = ibgeUpdateOnlyRepository;
             _mapper = mapper;
             _workUnit = workUnit;
+            _loggedUser = loggedUser;
         }
 
         public async Task<IBGEResponseJson> Execute(string iBGECode)
         {
-            IBGE ibgeToRemove = await _ibgeUpdateOnlyRepository.GetIBGEByIBGECodeToUpdate(iBGECode);
+            IBGE ibgeToRemove = await _ibgeUpdateOnlyRepository.GetIBGEByIBGECodeToUpdate(iBGECode) ?? throw new ValidationException(APIMSG.NO_EXISTING_CODE);
 
-            await ValidateIBGE(ibgeToRemove);
+            User user = await _loggedUser.GetLoggedUser();
 
             _mapper.Map(ibgeToRemove, ibgeToRemove);
+
+            ibgeToRemove.UpdateUserId = user.Id.Value;
 
             _ibgeUpdateOnlyRepository.Update(ibgeToRemove);
 
@@ -42,12 +48,6 @@ namespace BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule
                 Success = true,
                 IBGECode = iBGECode
             };
-        }
-
-        private async Task ValidateIBGE(IBGE ibge)
-        {
-            if (ibge == null)
-                throw new ValidationException(APIMSG.NO_EXISTING_CODE);
         }
     }
 }

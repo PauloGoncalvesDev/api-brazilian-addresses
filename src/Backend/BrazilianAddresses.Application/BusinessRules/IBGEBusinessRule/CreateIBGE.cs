@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule.Interfaces;
+using BrazilianAddresses.Application.Services.LoggedUser;
 using BrazilianAddresses.Application.Validators.IBGEValidator;
 using BrazilianAddresses.Communication.Requests;
 using BrazilianAddresses.Communication.Responses;
@@ -22,19 +23,27 @@ namespace BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule
 
         private readonly IWorkUnit _workUnit;
 
-        public CreateIBGE(IIBGEWriteOnlyRepository ibgeWriteOnlyRepository, IMapper mapper, IWorkUnit workUnit, IIBGEReadOnlyRepository ibgeReadOnlyRepository)
+        private readonly ILoggedUser _loggedUser;
+
+        public CreateIBGE(IIBGEWriteOnlyRepository ibgeWriteOnlyRepository, IMapper mapper, IWorkUnit workUnit, IIBGEReadOnlyRepository ibgeReadOnlyRepository, ILoggedUser loggedUser)
         {
             _ibgeWriteOnlyRepository = ibgeWriteOnlyRepository;
             _mapper = mapper;
             _workUnit = workUnit;
             _ibgeReadOnlyRepository = ibgeReadOnlyRepository;
+            _loggedUser = loggedUser;
         }
 
         public async Task<IBGEResponseJson> Execute(IBGERequestJson ibgeRequestJson)
         {
             await ValidateIBGE(ibgeRequestJson);
 
+            User user = await _loggedUser.GetLoggedUser();
+
             IBGE ibge = _mapper.Map<IBGE>(ibgeRequestJson);
+
+            ibge.CreationUserId = user.Id.Value;
+            ibge.UpdateUserId = user.Id.Value;
 
             await _ibgeWriteOnlyRepository.Add(ibge);
 
@@ -60,7 +69,7 @@ namespace BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule
             if (!validationResult.IsValid)
             {
                 List<string> errorMessages = validationResult.Errors.Select(error => error.ErrorMessage).ToList();
-                
+
                 throw new ValidationException(errorMessages);
             }
         }

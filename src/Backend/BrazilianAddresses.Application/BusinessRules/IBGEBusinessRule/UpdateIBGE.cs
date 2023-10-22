@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule.Interfaces;
+using BrazilianAddresses.Application.Services.LoggedUser;
 using BrazilianAddresses.Application.Validators.IBGEValidator;
 using BrazilianAddresses.Communication.Requests;
 using BrazilianAddresses.Communication.Responses;
@@ -20,11 +21,14 @@ namespace BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule
 
         private readonly IWorkUnit _workUnit;
 
-        public UpdateIBGE(IIBGEUpdateOnlyRepository ibgeUpdateOnlyRepository, IMapper mapper, IWorkUnit workUnit)
+        private readonly ILoggedUser _loggedUser;
+
+        public UpdateIBGE(IIBGEUpdateOnlyRepository ibgeUpdateOnlyRepository, IMapper mapper, IWorkUnit workUnit, ILoggedUser loggedUser)
         {
             _ibgeUpdateOnlyRepository = ibgeUpdateOnlyRepository;
             _mapper = mapper;
             _workUnit = workUnit;
+            _loggedUser = loggedUser;
         }
 
         public async Task<IBGEResponseJson> Execute(IBGEUpdateRequestJson ibgeUpdateRequestJson)
@@ -33,7 +37,11 @@ namespace BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule
 
             await ValidateIBGE(ibgeUpdateRequestJson, ibge);
 
+            User user = await _loggedUser.GetLoggedUser();
+
             _mapper.Map(ibgeUpdateRequestJson, ibge);
+
+            ibge.UpdateUserId = user.Id.Value;    
 
             _ibgeUpdateOnlyRepository.Update(ibge);
 
