@@ -1,0 +1,447 @@
+openapi: 3.0.3
+info:
+  title: Brazilian Addresses API
+  description: |-
+   Este é um CRUD simples de endereços brasileiros baseado na especificação OpenAPI 3.0
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: paulogoncalves.dev@gmail.com
+  license:
+    name: Apache 2.0
+    url: https://localhost:7290
+  version: 1.0.0
+servers:
+  - url: https://brazillianaddressapi.azurewebsites.net
+tags:
+  - name: IBGE
+    description: Funcionalidades referentes ao IBGE
+  - name: User
+    description: Funcionalidades referentes ao Usuário
+  - name: Login
+    description: Funcionalidades referentes ao Login
+paths:
+  /IBGE/CreateIBGE:
+    post:
+      tags:
+        - IBGE
+      summary: Adiciona um novo endereço
+      description: Adiciona um novo endereço
+      operationId: createAddress
+      requestBody:
+        description: Objeto para criação de endereço
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IBGE'
+        required: true
+      responses:
+        '201':
+          description: Endereço adicionado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IBGEResponseJson'
+        '400':
+          description: Não foi possível inserir o endereço informado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseJson'
+      security:
+        - bearerAuth: []
+  /IBGE/UpdateIBGE:
+    put:
+      tags:
+        - IBGE
+      summary: Atualiza um endereço existente
+      description: Atualiza um endereço existente pelo código IBGE
+      operationId: updateAddress
+      requestBody:
+        description: Objeto para atualização de endereço
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IBGE'
+        required: true
+      responses:
+        '200':
+          description: Endereço atualizado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IBGE'          
+        '400':
+          description: Não foi possível atualizar o endereço informado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseJson'
+      security:
+        - bearerAuth: []
+  /IBGE/RemoveIBGE:
+    delete:
+      tags:
+        - IBGE
+      summary: Remove um endereço existente
+      description: Apaga um endereço
+      operationId: deleteAddress
+      parameters:
+        - name: IBGECode
+          in: query
+          required: true
+          schema:
+            type: string
+            example: '1234567'
+      responses:
+        '200':
+          description: Remoção concluída com sucesso
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/IBGE'
+        '400':
+          description: Não foi possível remover o endereço informado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseJson'
+      security:
+        - bearerAuth: []
+  /IBGE/GetAllIBGEAddresses:
+    get:
+      tags:
+        - IBGE
+      summary: Lista todos os endereços
+      description: Retorna todos os endereços sem filtros
+      operationId: getAllAddress
+      parameters:
+        - name: pageIndex
+          in: query
+          description: Número da página
+          required: true
+          schema:
+            type: integer
+            example: 1
+        - name: pageSize
+          in: query
+          description: Quantidade de registros por página 
+          required: true
+          schema:
+            type: integer
+            example: 10
+      responses:
+        '200':
+          description: Listagem de endereços realizada com sucesso
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/AddressResponseJson'          
+        '400':
+          description: Erro ao realizar listagem de endereços
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseJson'
+      security:
+        - bearerAuth: []
+  /IBGE/GetIBGEAddressesByState:
+    get:
+      tags:
+        - IBGE
+      summary: Lista endereços pelo estado
+      description: Retorna todos os endereços do estado informado
+      operationId: getIBGEAddressesByState
+      parameters:
+        - name: State
+          in: query
+          description: Estado
+          required: true
+          schema:
+            $ref: '#/components/schemas/StateEnum'
+        - name: pageIndex
+          in: query
+          description: Número da página
+          required: true
+          schema:
+            type: integer
+            example: 1
+        - name: pageSize
+          in: query
+          description: Quantidade de registros por página
+          required: true
+          schema:
+            type: integer
+            example: 10
+      responses:
+        '200':
+          description: Listagem de endereços realizada com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddressResponseJson' 
+        '400':
+          description: Erro ao realizar listagem de endereços
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseJson'
+      security:
+        - bearerAuth: []
+  /IBGE/GetIBGEAddressByCity:
+    get:
+      tags:
+        - IBGE
+      summary: Lista endereços pela cidade
+      description: Retorna todas as cidades com o nome informado
+      operationId: getIBGEAddressByCity
+      parameters:
+        - name: city
+          in: query
+          description: Nome da cidade
+          required: true
+          schema:
+            type: string
+            example: "Olho d'Água da Bica"
+        - name: pageIndex
+          in: query
+          description: Número da página
+          required: true
+          schema:
+            type: integer
+            example: 1
+        - name: pageSize
+          in: query
+          description: Número da página
+          required: true
+          schema:
+            type: integer
+            example: 10
+      responses:
+        '200':
+          description: Listagem de endereços realizada com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddressResponseJson' 
+        '400':
+          description: Erro ao realizar listagem de endereços
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseJson'
+      security:
+        - bearerAuth: []
+  /IBGE/GetIBGEAddressByIBGECode:
+    get:
+      tags:
+        - IBGE
+      summary: Lista endereços pelo código IBGE
+      description: Retorna o endereço com o código IBGE informado
+      operationId: getIBGEAddressByIBGECode
+      parameters:
+        - name: IBGECode
+          in: query
+          description: Código IBGE
+          required: true
+          schema:
+            type: string
+            example: 1234567
+      responses:
+        '200':
+          description: Listagem de endereços realizada com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddressResponseJson' 
+        '400':
+          description: Erro ao realizar listagem de endereços
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseJson'
+      security:
+        - bearerAuth: []
+  /User:
+    post:
+      tags:
+        - User
+      summary: Cria usuário
+      description: Cria um novo usuário
+      operationId: createUser
+      requestBody:
+        description: Objeto para criação de usuário
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '201':
+          description: Usuário criado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          description: Não foi possível registar novo usuário
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseJson'
+  /Login:
+    post:
+      tags:
+        - Login
+      summary: Realiza login do usuário
+      description: Realiza login do usuário
+      operationId: login
+      requestBody:
+        description: Objeto para realização de login
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Login'
+      responses:
+        '200':
+          description: Login efetuado com sucesso.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponseJson'
+        '400':
+          description: Erro ao realizar login
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseJson'
+components:
+  schemas:
+    User:
+      required:
+        - email
+        - password
+        - userRole
+      type: object
+      properties:
+        email:
+          type: string
+          example: john@email.com
+        password:
+          type: string
+          example: '123456'
+        userRole:
+          type: integer
+          example: 0
+          enum:
+            - 0 - Admin
+            - 1 - Client
+    IBGE:
+      required:
+        - ibgeCode
+        - state
+        - city
+      type: object
+      properties:
+        ibgeCode:
+          type: string
+          example: '1234567'
+        state:
+          $ref: '#/components/schemas/StateEnum'
+        city:
+          type: string
+          description: Nome da cidade
+          example: "Fortaleza"
+    StateEnum:
+      type: string
+      example: CE
+      enum:
+        - AC
+        - AL
+        - AP
+        - AM
+        - BA
+        - CE
+        - DF
+        - ES
+        - GO
+        - MA
+        - MT
+        - MS
+        - MG
+        - PA
+        - PB
+        - PR
+        - PE
+        - PI
+        - RJ
+        - RN
+        - RS
+        - RO
+        - RR
+        - SC
+        - SP
+        - SE
+        - TO
+    IBGEResponseJson:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          example: true
+        Message:
+          type: string
+          example: Localidade informada foi registrada com sucesso
+        IBGECode:
+          type: string
+          example: '1234567'
+    AddressResponseJson:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: Listagem realizada com sucesso
+        addresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/IBGE'
+    ErrorResponseJson:
+      type: object
+      properties:
+        Success:
+          type: boolean
+          example: false
+        Message:
+          type: array
+          items:
+            example: Especificação do erro.
+    Login:
+      required:
+        - email
+        - password
+      type: object
+      properties:
+        email:
+          type: string
+          example: "john@email.com"
+        password:
+          type: string
+          example: "123456"
+    LoginResponseJson:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: Login efetuado com sucesso.
+        token:
+          type: string
+          example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWwiOiIxMkAyIiwidXNlcnJvbGUiOiJDbGllbnQiLCJuYmYiOjE2OTc5OTE0OTIsImV4cCI6MTY5Nzk5ODY5MiwiaWF0IjoxNjk3OTkxNDkyfQ.Ly80BSbj1V4TzqhNprGyyoqHKNp9qi4Uhbko3rKcgHo8"
+  securitySchemes:
+    bearerAuth: 
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
