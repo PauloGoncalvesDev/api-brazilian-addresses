@@ -268,15 +268,6 @@ namespace BrazilianAddresses.Exceptions.ResourcesMessage {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The city entered is not registered..
-        /// </summary>
-        public static string NO_EXISTING_CITY {
-            get {
-                return ResourceManager.GetString("NO_EXISTING_CITY", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Login successfully completed..
         /// </summary>
         public static string LOGIN_COMPLETED {
@@ -295,11 +286,29 @@ namespace BrazilianAddresses.Exceptions.ResourcesMessage {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The city entered is not registered..
+        /// </summary>
+        public static string NO_EXISTING_CITY {
+            get {
+                return ResourceManager.GetString("NO_EXISTING_CITY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The city code entered is not registered..
         /// </summary>
         public static string NO_EXISTING_CODE {
             get {
                 return ResourceManager.GetString("NO_EXISTING_CODE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Token is expired..
+        /// </summary>
+        public static string TOKEN_EXPIRED {
+            get {
+                return ResourceManager.GetString("TOKEN_EXPIRED", resourceCulture);
             }
         }
         
@@ -327,6 +336,15 @@ namespace BrazilianAddresses.Exceptions.ResourcesMessage {
         public static string USER_CREATED {
             get {
                 return ResourceManager.GetString("USER_CREATED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User is not authorized to access the method..
+        /// </summary>
+        public static string USER_UNAUTHORIZED {
+            get {
+                return ResourceManager.GetString("USER_UNAUTHORIZED", resourceCulture);
             }
         }
     }

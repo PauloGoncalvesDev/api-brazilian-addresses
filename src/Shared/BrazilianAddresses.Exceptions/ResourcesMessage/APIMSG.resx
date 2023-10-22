@@ -207,4 +207,10 @@
   <data name="USER_CREATED" xml:space="preserve">
     <value>User created successfully.</value>
   </data>
+  <data name="TOKEN_EXPIRED" xml:space="preserve">
+    <value>Token is expired.</value>
+  </data>
+  <data name="USER_UNAUTHORIZED" xml:space="preserve">
+    <value>User is not authorized to access the method.</value>
+  </data>
 </root>

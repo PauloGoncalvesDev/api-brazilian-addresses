@@ -9,7 +9,7 @@ namespace BrazilianAddresses.Application.Services.Token
     {
         private readonly string _emailAlias = "eml";
 
-        private readonly string _roleAlias = "roles";
+        private readonly string _roleAlias = "userrole";
 
         private readonly double _expirationTime;
 
@@ -62,6 +62,13 @@ namespace BrazilianAddresses.Application.Services.Token
             ClaimsPrincipal claimsPrincipal = ValidateTokenJwt(tokenJwt);
 
             return claimsPrincipal.FindFirst(_emailAlias).Value;
+        }
+
+        public string GetRoleFromTokenJwt(string tokenJwt)
+        {
+            ClaimsPrincipal claimsPrincipal = ValidateTokenJwt(tokenJwt);
+
+            return claimsPrincipal.FindFirst(_roleAlias).Value;
         }
 
         private SymmetricSecurityKey SymmetricKey()
