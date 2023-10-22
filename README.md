@@ -19,6 +19,8 @@ A **Brazilian Addresses API** é uma Web API construída em C# utilizando o fram
 
 A API permite o gerenciamento eficiente de informações sobre cidades brasileiras, armazenando dados essenciais como nome, código IBGE e estado. Além disso, ela oferece funcionalidades de autenticação e gestão de usuários, tornando-a uma solução completa para a gestão de endereços.
 
+**Nota:** Esta é a versão inicial da API, e está sujeita a alterações e melhorias ao longo do tempo. Estamos comprometidos em aprimorar e expandir as funcionalidades com base no feedback de usuários e nas necessidades crescentes do projeto.
+
 ## Motivação
 
 Este projeto foi gerado como parte de um desafio proposto pelo canal do [Balta.io](https://www.youtube.com/c/baltaio). O desafio foi uma oportunidade de aprimorar habilidades práticas em desenvolvimento de APIs utilizando C# e .NET 7, ao mesmo tempo que proporcionou uma experiência prática na resolução de problemas relacionados à gestão de endereços brasileiros.
