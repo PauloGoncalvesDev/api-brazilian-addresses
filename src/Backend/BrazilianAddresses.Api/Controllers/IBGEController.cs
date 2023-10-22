@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BrazilianAddresses.Api.Filters;
+using BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule.Interfaces;
 using BrazilianAddresses.Communication.Requests;
 using BrazilianAddresses.Communication.Responses;
 using BrazilianAddresses.Exceptions.ResourcesMessage;
-using BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule.Interfaces;
-using BrazilianAddresses.Api.Filters;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BrazilianAddresses.Api.Controllers
 {
@@ -11,6 +11,8 @@ namespace BrazilianAddresses.Api.Controllers
     {
         [HttpPost]
         [ProducesResponseType(typeof(IBGEResponseJson), StatusCodes.Status201Created)]
+        [ServiceFilter(typeof(UserAuthorizationAttribute))]
+        [ServiceFilter(typeof(AdminAuthorizationAttribute))]
         public async Task<IActionResult> CreateIBGE([FromServices] ICreateIBGE createIBGE, [FromBody] IBGERequestJson ibgeRequestJson)
         {
             IBGEResponseJson ibgeResponseJson = await createIBGE.Execute(ibgeRequestJson);
@@ -20,6 +22,8 @@ namespace BrazilianAddresses.Api.Controllers
 
         [HttpPut]
         [ProducesResponseType(typeof(IBGEResponseJson), StatusCodes.Status200OK)]
+        [ServiceFilter(typeof(UserAuthorizationAttribute))]
+        [ServiceFilter(typeof(AdminAuthorizationAttribute))]
         public async Task<IActionResult> UpdateIBGE([FromServices] IUpdateIBGE updateIBGE, [FromBody] IBGEUpdateRequestJson ibgeUpdateRequestJson)
         {
             IBGEResponseJson ibgeResponseJson = await updateIBGE.Execute(ibgeUpdateRequestJson);
@@ -39,6 +43,8 @@ namespace BrazilianAddresses.Api.Controllers
 
         [HttpDelete]
         [ProducesResponseType(typeof(IBGEResponseJson), StatusCodes.Status200OK)]
+        [ServiceFilter(typeof(UserAuthorizationAttribute))]
+        [ServiceFilter(typeof(AdminAuthorizationAttribute))]
         public async Task<IActionResult> RemoveIBGE([FromServices] IRemoveIBGE removeIBGE, [FromQuery] IBGERemoveRequestJson ibgeRemoveRequestJson)
         {
             IBGEResponseJson ibgeResponseJson = await removeIBGE.Execute(ibgeRemoveRequestJson.IBGECode);

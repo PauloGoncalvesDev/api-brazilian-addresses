@@ -16,7 +16,6 @@ builder.Services.AddControllers().AddJsonOptions(options =>
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 builder.Services.AddSwaggerGen(option =>
 {
     option.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "API Endereços Brasileiros", Version = "1.0", Description = "Web API para gerenciamento de endereços brasileiros." });
@@ -54,6 +53,7 @@ builder.Services.AddScoped(provider => new AutoMapper.MapperConfiguration(cfg =>
 }).CreateMapper());
 
 builder.Services.AddScoped<UserAuthorizationAttribute>();
+builder.Services.AddScoped<AdminAuthorizationAttribute>();
 
 var app = builder.Build();
 
