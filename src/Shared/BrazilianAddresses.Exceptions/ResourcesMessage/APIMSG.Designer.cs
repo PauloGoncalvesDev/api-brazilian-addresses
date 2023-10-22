@@ -277,6 +277,24 @@ namespace BrazilianAddresses.Exceptions.ResourcesMessage {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Login successfully completed..
+        /// </summary>
+        public static string LOGIN_COMPLETED {
+            get {
+                return ResourceManager.GetString("LOGIN_COMPLETED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email or password is incorrect..
+        /// </summary>
+        public static string LOGIN_ERROR {
+            get {
+                return ResourceManager.GetString("LOGIN_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The city code entered is not registered..
         /// </summary>
         public static string NO_EXISTING_CODE {

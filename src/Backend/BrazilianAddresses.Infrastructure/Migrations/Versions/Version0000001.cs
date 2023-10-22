@@ -16,7 +16,7 @@ namespace BrazilianAddresses.Infrastructure.Migrations.Versions
             table.WithColumn("Email").AsString().NotNullable()
                 .WithColumn("Password").AsString(2000).NotNullable()
                 .WithColumn("Salt").AsString().NotNullable()
-                .WithColumn("Role").AsByte().NotNullable();
+                .WithColumn("Role").AsInt32().NotNullable();
         }
     }
 }
