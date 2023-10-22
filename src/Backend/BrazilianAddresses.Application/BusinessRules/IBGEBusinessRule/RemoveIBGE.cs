@@ -26,9 +26,7 @@ namespace BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule
 
         public async Task<IBGEResponseJson> Execute(string iBGECode)
         {
-            IBGE ibgeToRemove = await _ibgeUpdateOnlyRepository.GetIBGEByIBGECodeToUpdate(iBGECode);
-
-            await ValidateIBGE(ibgeToRemove);
+            IBGE ibgeToRemove = await _ibgeUpdateOnlyRepository.GetIBGEByIBGECodeToUpdate(iBGECode) ?? throw new ValidationException(APIMSG.NO_EXISTING_CODE);
 
             _mapper.Map(ibgeToRemove, ibgeToRemove);
 
@@ -42,12 +40,6 @@ namespace BrazilianAddresses.Application.BusinessRules.IBGEBusinessRule
                 Success = true,
                 IBGECode = iBGECode
             };
-        }
-
-        private async Task ValidateIBGE(IBGE ibge)
-        {
-            if (ibge == null)
-                throw new ValidationException(APIMSG.NO_EXISTING_CODE);
         }
     }
 }
